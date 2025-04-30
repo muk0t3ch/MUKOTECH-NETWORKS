@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../../../Volumes/MUK0T3CH JR/MUK0T3CH Ltd Business Iterms/MUKOTECH NETWORKS  v1.0.0.0/css"
+		},
+		{
+			"path": "../../../../../Volumes/MUK0T3CH JR/MUK0T3CH Ltd Business Iterms/MUKOTECH NETWORKS  v1.0.0.0/img"
+		},
+		{
+			"path": "../../../../../Volumes/MUK0T3CH JR/MUK0T3CH Ltd Business Iterms/MUKOTECH NETWORKS  v1.0.0.0/js"
+		},
+		{
+			"path": "../../../../../Volumes/MUK0T3CH JR/MUK0T3CH Ltd Business Iterms/MUKOTECH NETWORKS  v1.0.0.0/lib"
+		},
+		{
+			"path": "../../../../../Volumes/MUK0T3CH JR/MUK0T3CH Ltd Business Iterms/MUKOTECH NETWORKS  v1.0.0.0/scss"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "MUKOTECH-NETWORKS"
+	}
+}
