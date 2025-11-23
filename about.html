@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>MUKOTECH NETWORKS</title>
+    <title>About Us | MUKOTECH NETWORKS - Leading IT Solutions Provider in Zambia</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta name="description" content="Learn about MUKOTECH NETWORKS - Zambia's premier IT solutions provider. Discover our mission, leadership team, company history, and commitment to technological excellence.">
+    <meta name="keywords" content="IT company Zambia, technology solutions, network services, computer repair, web development, about Mukotech, IT services Copperbelt">
+    <meta name="author" content="MUKOTECH NETWORKS">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -14,8 +15,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Red+Rose:wght@600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Red+Rose:wght@600;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -30,362 +30,915 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary: #FB8505;
+            --secondary: #333333;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+        }
+
+        h1, h2, h3, h4, h5, h6,
+        .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+            font-family: 'Red Rose', serif;
+            font-weight: 700;
+        }
+
+        .text-primary {
+            color: var(--primary) !important;
+        }
+
+        .bg-primary {
+            background-color: var(--primary) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: #e07a04;
+            border-color: #e07a04;
+        }
+
+        .navbar-light .navbar-nav .nav-link.active {
+            color: var(--primary) !important;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .navbar-light .navbar-nav .nav-link.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        /* Enhanced Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-container img {
+            width: 140px;
+            height: auto;
+            z-index: 20;
+            position: relative;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.9; }
+        }
+
+        .atom {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .orbit {
+            position: absolute;
+            border: 1.5px solid;
+            border-radius: 50%;
+            animation: rotate linear infinite;
+            transform-origin: center;
+        }
+
+        .orbit-1 {
+            width: 200px;
+            height: 200px;
+            border-color: rgba(251, 133, 5, 0.3);
+            top: 10px;
+            left: 10px;
+            animation-duration: 18s;
+        }
+
+        .orbit-2 {
+            width: 160px;
+            height: 160px;
+            border-color: rgba(51, 51, 51, 0.3);
+            top: 30px;
+            left: 30px;
+            animation-direction: reverse;
+            animation-duration: 14s;
+        }
+
+        .orbit-3 {
+            width: 120px;
+            height: 120px;
+            border-color: rgba(251, 133, 5, 0.3);
+            top: 50px;
+            left: 50px;
+            animation-duration: 10s;
+        }
+
+        .electron {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 6px var(--primary);
+        }
+
+        .orbit-2 .electron {
+            background-color: var(--secondary);
+            box-shadow: 0 0 6px var(--secondary);
+            width: 6px;
+            height: 6px;
+            top: -3px;
+        }
+
+        .orbit-3 .electron {
+            background-color: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+            width: 10px;
+            height: 10px;
+            top: -5px;
+        }
+
+        .atom::before {
+            content: '';
+            position: absolute;
+            width: 1.5px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(251, 133, 5, 0.2), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .atom::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1.5px;
+            background: linear-gradient(to right, transparent, rgba(51, 51, 51, 0.2), transparent);
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary);
+            font-size: 16px;
+            font-weight: 500;
+            animation: fadeInOut 2s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .loaded #preloader {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* About Page Custom Styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/about-bg.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .about-feature-box {
+            transition: all 0.3s ease;
+            border-left: 3px solid var(--primary);
+            height: 100%;
+        }
+
+        .about-feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .leadership-card {
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .leadership-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .team-item {
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .team-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .team-social {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(251, 133, 5, 0.9);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .team-item:hover .team-social {
+            opacity: 1;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 5px solid white;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: -120px;
+            top: 25px;
+            width: 80px;
+            text-align: right;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .company-values li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .company-values li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-family: 'Red Rose', serif;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-year {
+                position: relative;
+                left: 0;
+                top: 0;
+                width: auto;
+                text-align: left;
+                margin-bottom: 10px;
+            }
+
+            .timeline:before {
+                left: 10px;
+            }
+
+            .timeline-item:before {
+                left: -28px;
+                top: 25px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+<!-- Preloader with Atom Animation -->
+<div id="preloader">
+    <div class="logo-container">
+        <!-- Atom Structure -->
+        <div class="atom">
+            <div class="orbit orbit-1">
+                <div class="electron"></div>
+            </div>
+            <div class="orbit orbit-2">
+                <div class="electron"></div>
+            </div>
+            <div class="orbit orbit-3">
+                <div class="electron"></div>
+            </div>
+        </div>
+        <!-- Logo -->
+        <img src="img/MUKOTECH NEW LOGO44.png" alt="MUKOTECH NETWORKS Logo">
+        <div class="loading-text">Loading Innovation...</div>
     </div>
-    <!-- Spinner End -->
+</div>
 
+<!-- Main Content -->
+<!-- Topbar Start -->
+<div class="container-fluid py-2 d-none d-lg-flex bg-dark text-white">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <div>
+                <small class="me-3"><i class="fa fa-map-marker-alt me-2 text-primary"></i>H70 Ndeke-Village, Kitwe, Zambia</small>
+                <small class="me-3"><i class="fa fa-clock me-2 text-primary"></i>Mon-Fri: 8:00 AM - 5:00 PM, Sat: 9:00 AM - 1:00 PM</small>
+            </div>
+            <nav class="breadcrumb mb-0">
+                <a class="breadcrumb-item small text-white-50" href="#">Careers</a>
+                <a class="breadcrumb-item small text-white-50" href="#">Support</a>
+                <a class="breadcrumb-item small text-white-50" href="policy.html">Privacy Policy</a>
+                <a class="breadcrumb-item small text-white-50" href="#">FAQ</a>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
 
-    <!-- Topbar Start -->
-    <div class="container-fluid py-2 d-none d-lg-flex">
-        <div class="container">
-            <div class="d-flex justify-content-between">
-                <div>
-                    <small class="me-3"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
-                    <small class="me-3"><i class="fa fa-clock me-2"></i>Mon-Sat 09am-5pm, Sun Closed</small>
+<!-- Brand Start -->
+<div class="container-fluid bg-primary text-white pt-4 pb-5 d-none d-lg-flex">
+    <div class="container pb-2">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex">
+                <i class="bi bi-telephone-inbound fs-2"></i>
+                <div class="ms-3">
+                    <h5 class="text-white mb-0">Call Us</h5>
+                    <span>+260 967 832 706</span>
                 </div>
-                <nav class="breadcrumb mb-0">
-                    <a class="breadcrumb-item small text-body" href="#">Career</a>
-                    <a class="breadcrumb-item small text-body" href="#">Support</a>
-                    <a class="breadcrumb-item small text-body" href="#">Terms</a>
-                    <a class="breadcrumb-item small text-body" href="#">FAQs</a>
-                </nav>
+            </div>
+            <a href="index.html" class="h1 text-white mb-0">MUKOTECH<span class="text-dark">NETWORKS</span></a>
+            <div class="d-flex">
+                <i class="bi bi-envelope fs-2"></i>
+                <div class="ms-3">
+                    <h5 class="text-white mb-0">Email Us</h5>
+                    <span>info@mukotechnetworks.com</span>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
+</div>
+<!-- Brand End -->
 
-
-    <!-- Brand Start -->
-    <div class="container-fluid bg-primary text-white pt-4 pb-5 d-none d-lg-flex">
-        <div class="container pb-2">
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="d-flex">
-                    <i class="bi bi-telephone-inbound fs-2"></i>
-                    <div class="ms-3">
-                        <h5 class="text-white mb-0">Call Now</h5>
-                        <span>+012 345 6789</span>
-                    </div>
-                </div>
-                <a href="index.html" class="h1 text-white mb-0">MUKOTECH<span class="text-dark">NETWORKS</span></a>
-                <div class="d-flex">
-                    <i class="bi bi-envelope fs-2"></i>
-                    <div class="ms-3">
-                        <h5 class="text-white mb-0">Mail Now</h5>
-                        <span>mukotech.networks@gmail.com</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Brand End -->
-
-
-    <!-- Navbar Start -->
-    <div class="container-fluid sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-white py-lg-0 px-lg-3">
-                <a href="index.html" class="navbar-brand d-lg-none">
-                    <h1 class="text-primary m-0">MUKOTECH<span class="text-dark">NETWORKS</span></h1>
-                </a>
-                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
+<!-- Navbar Start -->
+<div class="container-fluid sticky-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-lg-0 px-lg-3">
+            <a href="index.html" class="navbar-brand d-lg-none">
+                <h1 class="text-primary m-0">MUKOTECH<span class="text-dark">NETWORKS</span></h1>
+            </a>
+            <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link active">About</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu bg-light m-0">
-                                <a href="feature.html" class="dropdown-item">Features</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="appoinment.html" class="dropdown-item">Appoinment</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    </div>
-                    <div class="ms-auto d-none d-lg-flex">
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-youtube"></i></a>
-                    </div>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <a href="service.html" class="nav-item nav-link">IT Services</a>
+                    <a href="appoinment.html" class="nav-item nav-link">Appointment</a>
+                    <a href="E_Commerce.html" class="nav-item nav-link">E-Commerce</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="about.html" class="nav-item nav-link active">About</a>
+                    <a href="policy.html" class="nav-item nav-link">Policies</a>
                 </div>
-            </nav>
-        </div>
-    </div>
-    <!-- Navbar End -->
-
-
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container text-center py-5 mt-4">
-            <h1 class="display-2 text-white mb-3 animated slideInDown">About</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item" aria-current="page">About</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- Page Header End -->
-
-    
-    <!-- About Start -->
-<!--    -->
-    <!-- About End -->
-
-
-    <!-- Features Start -->
-<!--    <div class="container-fluid feature my-5 wow fadeInUp" data-wow-delay="0.1s">-->
-<!--        <div class="container">-->
-<!--            <div class="row g-0">-->
-<!--                <div class="col-lg-6 pt-lg-5">-->
-<!--                    <div class="bg-white p-5 mt-lg-5">-->
-<!--                        <h1 class="display-6 mb-4 wow fadeIn" data-wow-delay="0.3s">The Best Medical Test & Laboratory Solution</h1>-->
-<!--                        <p class="mb-4 wow fadeIn" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor. Quisque vel lorem porttitor, malesuada arcu quis, fringilla risus. Pellentesque eu consequat augue.</p>-->
-<!--                        <div class="row g-5 pt-2 mb-5">-->
-<!--                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">-->
-<!--                                <div class="icon-box-primary mb-4">-->
-<!--                                    <i class="bi bi-person-plus text-dark"></i>-->
-<!--                                </div>-->
-<!--                                <h5 class="mb-3">Experience Doctors</h5>-->
-<!--                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>-->
-<!--                            </div>-->
-<!--                            <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">-->
-<!--                                <div class="icon-box-primary mb-4">-->
-<!--                                    <i class="bi bi-check-all text-dark"></i>-->
-<!--                                </div>-->
-<!--                                <h5 class="mb-3">Advanced Microscopy</h5>-->
-<!--                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <a class="btn btn-primary py-3 px-5 wow fadeIn" data-wow-delay="0.5s" href="">Explore More</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-lg-6">-->
-<!--                    <div class="row h-100 align-items-end">-->
-<!--                        <div class="col-12 wow fadeIn" data-wow-delay="0.3s">-->
-<!--                            <div class="d-flex align-items-center justify-content-center" style="min-height: 300px;">-->
-<!--                                <button type="button" class="btn-play" data-bs-toggle="modal"-->
-<!--                                    data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">-->
-<!--                                    <span></span>-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-12">-->
-<!--                            <div class="bg-primary p-5">-->
-<!--                                <div class="experience mb-4 wow fadeIn" data-wow-delay="0.3s">-->
-<!--                                    <div class="d-flex justify-content-between mb-2">-->
-<!--                                        <span class="text-white">Sample Preparation</span>-->
-<!--                                        <span class="text-white">90%</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="progress">-->
-<!--                                        <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="experience mb-4 wow fadeIn" data-wow-delay="0.4s">-->
-<!--                                    <div class="d-flex justify-content-between mb-2">-->
-<!--                                        <span class="text-white">Result Accuracy</span>-->
-<!--                                        <span class="text-white">95%</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="progress">-->
-<!--                                        <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="experience mb-0 wow fadeIn" data-wow-delay="0.5s">-->
-<!--                                    <div class="d-flex justify-content-between mb-2">-->
-<!--                                        <span class="text-white">Lab Equipments</span>-->
-<!--                                        <span class="text-white">90%</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="progress">-->
-<!--                                        <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-    <!-- Features End -->
-
-
-    <!-- Video Modal Start -->
-<!--    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"-->
-<!--        aria-hidden="true">-->
-<!--        <div class="modal-dialog">-->
-<!--            <div class="modal-content rounded-0">-->
-<!--                <div class="modal-header">-->
-<!--                    <h3 class="modal-title" id="exampleModalLabel">Youtube Video</h3>-->
-<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--                </div>-->
-<!--                <div class="modal-body">-->
-<!--                    &lt;!&ndash; 16:9 aspect ratio &ndash;&gt;-->
-<!--                    <div class="ratio ratio-16x9">-->
-<!--                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen-->
-<!--                            allowscriptaccess="always" allow="autoplay"></iframe>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-    <!-- Video Modal End -->
-
-
-    <!-- Team Start -->
-    <div class="container-fluid container-team py-5">
-        <div class="container pb-5">
-            <div class="row g-5 align-items-center mb-5">
-<!--                <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">-->
-<!--                    <img class="img-fluid w-100" src="img/team-1.jpg" alt="">-->
-<!--                </div>-->
-<!--                <div class="col-md-6 wow fadeIn" data-wow-delay="0.5s">-->
-<!--                    <h1 class="display-6 mb-3">Dr. John Martin</h1>-->
-<!--                    <p class="mb-1">CEO & Founder</p>-->
-<!--                    <p class="mb-5">Labsky, New York, USA</p>-->
-<!--                    <h3 class="mb-3">Biography</h3>-->
-<!--                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor. Quisque vel lorem porttitor, malesuada arcu quis, fringilla risus. Pellentesque eu consequat augue.</p>-->
-<!--                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor. Quisque vel lorem porttitor, malesuada arcu quis, fringilla risus. Pellentesque eu consequat augue.</p>-->
-<!--                    <div class="d-flex">-->
-<!--                        <a class="btn btn-lg-square btn-primary me-2" href=""><i class="fab fa-facebook-f"></i></a>-->
-<!--                        <a class="btn btn-lg-square btn-primary me-2" href=""><i class="fab fa-twitter"></i></a>-->
-<!--                        <a class="btn btn-lg-square btn-primary me-2" href=""><i class="fab fa-linkedin-in"></i></a>-->
-<!--                        <a class="btn btn-lg-square btn-primary me-2" href=""><i class="fab fa-youtube"></i></a>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div class="ms-auto d-none d-lg-flex">
+                    <a class="btn btn-sm-square btn-primary ms-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square btn-primary ms-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square btn-primary ms-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-sm-square btn-primary ms-2" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/team-2.jpg" alt="">
-                            <div class="team-social">
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-youtube"></i></a>
-                            </div>
+        </nav>
+    </div>
+</div>
+<!-- Navbar End -->
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center py-5 mt-4">
+        <h1 class="display-2 text-white mb-3 animated slideInDown">About Our Company</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">About Us</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- About Company Section Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="position-relative overflow-hidden rounded">
+                    <img class="img-fluid w-100" src="img/about-company.jpg" alt="MUKOTECH NETWORKS Office">
+                    <div class="position-absolute top-0 end-0 bg-primary rounded mt-n1 me-n4 py-4 px-3">
+                        <h3 class="text-white mb-0">Since <span class="fs-1">2020</span></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="display-6 mb-4">Welcome to MUKOTECH NETWORKS</h1>
+                <p class="mb-4">MUKOTECH NETWORKS is a premier technology solutions provider headquartered in Kitwe, Zambia. Founded in 2020, we have rapidly grown to become a trusted partner for businesses seeking comprehensive IT services, innovative digital solutions, and reliable technical support.</p>
+
+                <p class="mb-4">Our team of certified professionals combines technical expertise with business acumen to deliver solutions that drive efficiency, enhance productivity, and foster growth. We pride ourselves on understanding our clients' unique challenges and tailoring our services to meet their specific needs.</p>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle fa-2x text-primary me-3"></i>
+                            <h5 class="mb-0">Certified Professionals</h5>
                         </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-1">Alex Robin</h5>
-                            <span>Lab Assistant</span>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle fa-2x text-primary me-3"></i>
+                            <h5 class="mb-0">Quality Assurance</h5>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle fa-2x text-primary me-3"></i>
+                            <h5 class="mb-0">24/7 Support</h5>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle fa-2x text-primary me-3"></i>
+                            <h5 class="mb-0">Cutting-edge Solutions</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/team-3.jpg" alt="">
-                            <div class="team-social">
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-youtube"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-1">Andrew Bon</h5>
-                            <span>Lab Assistant</span>
-                        </div>
-                    </div>
+
+                <div class="border-top border-bottom border-primary py-3 mb-4">
+                    <p class="mb-0"><i class="fas fa-quote-left text-primary me-2"></i>We don't just provide IT solutions - we build partnerships that help our clients thrive in the digital economy.<i class="fas fa-quote-right text-primary ms-2"></i></p>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/team-4.jpg" alt="">
-                            <div class="team-social">
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-youtube"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-1">Martin Tompson</h5>
-                            <span>Lab Assistant</span>
-                        </div>
-                    </div>
+
+                <a href="contact.html" class="btn btn-primary py-2 px-4 me-2">Contact Us</a>
+                <a href="service.html" class="btn btn-outline-primary py-2 px-4">Our Services</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About Company Section End -->
+
+<!-- Stats Section Start -->
+<div class="container-fluid bg-primary text-white py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                <div class="stat-item bg-white text-dark p-4 rounded">
+                    <div class="stat-number">50+</div>
+                    <h5>Happy Clients</h5>
+                    <p class="mb-0">Satisfied businesses we've served</p>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/team-5.jpg" alt="">
-                            <div class="team-social">
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-square btn-light mx-1" href=""><i class="fab fa-youtube"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-1">Clarabelle Samber</h5>
-                            <span>Lab Assistant</span>
-                        </div>
-                    </div>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                <div class="stat-item bg-white text-dark p-4 rounded">
+                    <div class="stat-number">200+</div>
+                    <h5>Projects Completed</h5>
+                    <p class="mb-0">Successful implementations</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                <div class="stat-item bg-white text-dark p-4 rounded">
+                    <div class="stat-number">10+</div>
+                    <h5>Expert Team</h5>
+                    <p class="mb-0">Certified professionals</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                <div class="stat-item bg-white text-dark p-4 rounded">
+                    <div class="stat-number">24/7</div>
+                    <h5>Support</h5>
+                    <p class="mb-0">Always available for you</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Team End -->
+</div>
+<!-- Stats Section End -->
 
+<!-- Mission & Vision Section Start -->
+<div class="container-fluid bg-light py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-6 mb-4">Our Core Principles</h1>
+            <p class="mb-0">Guiding our decisions and shaping our future</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="about-feature-box bg-white p-4 p-md-5 h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-primary p-3 rounded-circle me-4">
+                            <i class="fas fa-bullseye fa-2x text-white"></i>
+                        </div>
+                        <h3 class="mb-0">Our Mission</h3>
+                    </div>
+                    <p>To empower businesses and individuals through cutting-edge technology solutions that drive efficiency, growth, and digital transformation. We are committed to delivering reliable, scalable, and innovative IT services tailored to our clients' unique needs.</p>
+                    <ul class="company-values mt-4">
+                        <li>Deliver exceptional IT solutions that solve real business challenges</li>
+                        <li>Provide outstanding customer service with rapid response times</li>
+                        <li>Foster technological advancement in the Zambian business community</li>
+                        <li>Support digital transformation across all industry sectors</li>
+                        <li>Maintain the highest standards of integrity and professionalism</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                <div class="about-feature-box bg-white p-4 p-md-5 h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-primary p-3 rounded-circle me-4">
+                            <i class="fas fa-eye fa-2x text-white"></i>
+                        </div>
+                        <h3 class="mb-0">Our Vision</h3>
+                    </div>
+                    <p>To be the leading technology partner in Zambia, recognized for excellence in IT solutions and digital innovation. We aim to bridge the technological gap by providing accessible, high-quality services that transform how businesses operate.</p>
+                    <ul class="company-values mt-4">
+                        <li>Become Zambia's most trusted IT solutions provider by 2025</li>
+                        <li>Expand our service offerings to cover emerging technologies</li>
+                        <li>Develop local tech talent through training and mentorship</li>
+                        <li>Drive digital inclusion across all sectors of the economy</li>
+                        <li>Establish regional offices across Zambia and beyond</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Mission & Vision Section End -->
 
-    <!-- Footer Start -->
-    <div class="container-fluid footer position-relative bg-dark text-white-50 py-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="row g-5 py-5">
-                <div class="col-lg-6 pe-lg-5">
+<!-- Our Values Section Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-6 mb-4">Our Core Values</h1>
+            <p class="mb-0">The foundation of everything we do</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                <div class="bg-light p-4 text-center rounded h-100">
+                    <div class="bg-primary p-3 rounded-circle d-inline-block mb-4">
+                        <i class="fas fa-handshake fa-2x text-white"></i>
+                    </div>
+                    <h4>Integrity</h4>
+                    <p class="mb-0">We maintain the highest ethical standards in all our business dealings and client relationships. Honesty and transparency guide every decision we make.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                <div class="bg-light p-4 text-center rounded h-100">
+                    <div class="bg-primary p-3 rounded-circle d-inline-block mb-4">
+                        <i class="fas fa-lightbulb fa-2x text-white"></i>
+                    </div>
+                    <h4>Innovation</h4>
+                    <p class="mb-0">We continuously explore new technologies and creative solutions to solve our clients' challenges. Our team stays ahead of industry trends.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                <div class="bg-light p-4 text-center rounded h-100">
+                    <div class="bg-primary p-3 rounded-circle d-inline-block mb-4">
+                        <i class="fas fa-users fa-2x text-white"></i>
+                    </div>
+                    <h4>Collaboration</h4>
+                    <p class="mb-0">We believe in teamwork both within our organization and with our clients to achieve the best results. Partnership is key to our success.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                <div class="bg-light p-4 text-center rounded h-100">
+                    <div class="bg-primary p-3 rounded-circle d-inline-block mb-4">
+                        <i class="fas fa-star fa-2x text-white"></i>
+                    </div>
+                    <h4>Excellence</h4>
+                    <p class="mb-0">We strive for the highest quality in everything we do, from service delivery to customer support. Good enough is never good enough for us.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Values Section End -->
+
+<!-- Leadership Section Start -->
+<div class="container-fluid bg-light py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-6 mb-4">Executive Leadership</h1>
+            <p class="mb-0">The visionaries driving our company forward</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-12 wow fadeIn" data-wow-delay="0.1s">
+                <div class="leadership-card bg-white p-4 p-md-5">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-4">
+                            <img src="img/ceo.jpg" class="img-fluid rounded" alt="Given Mukwanji - CEO">
+                        </div>
+                        <div class="col-md-8">
+                            <h2>Mr. Given Mukwanji</h2>
+                            <p class="text-primary mb-2">Founder & Chief Executive Officer</p>
+                            <p class="mb-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Kitwe, Copperbelt, Zambia</p>
+                            <h4 class="mb-3">Technology Visionary & Entrepreneur</h4>
+                            <p class="mb-4">Mr. Given Mukwanji Jr. is the visionary leader and founder of MUKOTECH NETWORKS. With over 8 years of experience in the technology sector, he has built a reputation for innovative thinking and practical problem-solving. His technical expertise spans network infrastructure, cybersecurity, and software development.</p>
+                            <p class="mb-4">Under his leadership, MUKOTECH NETWORKS has grown from a small startup to a recognized leader in Zambia's IT services sector. He has spearheaded the company's expansion into new service areas including cloud computing, enterprise software solutions, and digital transformation consulting.</p>
+                            <p class="mb-4">Mr. Mukwanji holds certifications in Cisco networking, Microsoft systems administration, and cybersecurity. He is a frequent speaker at technology conferences and serves as a mentor to young Zambian entrepreneurs through various business development programs.</p>
+                            <div class="d-flex pt-3">
+                                <a class="btn btn-square btn-primary me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-square btn-primary me-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-square btn-primary me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-square btn-primary me-2" href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Leadership Section End -->
+
+<!-- Team Section Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-6 mb-4">Our Expert Team</h1>
+            <p class="mb-0">Meet the talented professionals who make it all happen</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="team-item">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="img/network-engineer.jpg" alt="Alex Robin - Network Engineer">
+                        <div class="team-social">
+                            <a class="btn btn-square btn-light mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-light mx-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-light mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4">
+                        <h5 class="mb-1">Alex Robin</h5>
+                        <span>Senior Network Engineer</span>
+                        <p class="mt-2 mb-0 text-muted small">CCNP, CCNA Security</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="team-item">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="img/developer.jpg" alt="Andrew Bon - Developer">
+                        <div class="team-social">
+                            <a class="btn btn-square btn-light mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-light mx-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-light mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4">
+                        <h5 class="mb-1">Andrew Bon</h5>
+                        <span>Lead Software Developer</span>
+                        <p class="mt-2 mb-0 text-muted small">MERN Stack Specialist</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="img/support-specialist.jpg" alt="Martin Tompson - IT Specialist">
+                        <div class="team-social">
+                            <a class="btn btn-square btn-light mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-light mx-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-light mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4">
+                        <h5 class="mb-1">Martin Tompson</h5>
+                        <span>IT Support Manager</span>
+                        <p class="mt-2 mb-0 text-muted small">Microsoft Certified</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="team-item">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="img/designer.jpg" alt="Clarabelle Samber - Designer">
+                        <div class="team-social">
+                            <a class="btn btn-square btn-light mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-light mx-1" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-light mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4">
+                        <h5 class="mb-1">Clarabelle Samber</h5>
+                        <span>Creative Director</span>
+                        <p class="mt-2 mb-0 text-muted small">Adobe Certified Expert</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5 wow fadeInUp" data-wow-delay="0.1s">
+            <a href="contact.html" class="btn btn-primary py-2 px-4">Join Our Team</a>
+        </div>
+    </div>
+</div>
+<!-- Team Section End -->
+
+<!-- Company History Section Start -->
+<div class="container-fluid bg-light py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-6 mb-4">Our Journey</h1>
+            <p class="mb-0">Milestones in our growth and development</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item wow fadeInUp" data-wow-delay="0.1s">
+                <div class="timeline-year">2020</div>
+                <h3>Foundation</h3>
+                <p>MUKOTECH NETWORKS was founded by Given Mukwanji with a vision to provide quality IT solutions in Zambia. Started as a small computer repair shop in Kitwe, serving local businesses and individuals with hardware repairs and basic IT support.</p>
+            </div>
+            <div class="timeline-item wow fadeInUp" data-wow-delay="0.3s">
+                <div class="timeline-year">2021</div>
+                <h3>First Major Contract</h3>
+                <p>Secured our first corporate client, marking our transition from consumer to business IT services. Expanded our team to include two additional technicians and moved to a larger office space in Ndeke Village.</p>
+            </div>
+            <div class="timeline-item wow fadeInUp" data-wow-delay="0.5s">
+                <div class="timeline-year">2022</div>
+                <h3>Service Expansion</h3>
+                <p>Launched our network solutions division and began offering comprehensive IT support packages for small and medium businesses. Became a certified partner for several major technology brands including Microsoft and Cisco.</p>
+            </div>
+            <div class="timeline-item wow fadeInUp" data-wow-delay="0.7s">
+                <div class="timeline-year">2023</div>
+                <h3>Digital Transformation</h3>
+                <p>Introduced web development and digital marketing services, completing our transformation into a full-service technology provider. Our team grew to 10 professionals serving clients across the Copperbelt region.</p>
+            </div>
+            <div class="timeline-item wow fadeInUp" data-wow-delay="0.9s">
+                <div class="timeline-year">2024</div>
+                <h3>Future Goals</h3>
+                <p>Planning to open a second location in Lusaka and expand our service offerings to include cybersecurity consulting and cloud solutions. Aiming to double our client base and launch an internship program for local IT students.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Company History Section End -->
+
+<!-- Call to Action Start -->
+<div class="container-fluid bg-primary text-white py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-8 wow fadeIn" data-wow-delay="0.1s">
+                <h1 class="display-5 mb-0">Ready to Transform Your Business?</h1>
+                <p class="mb-0">Let's discuss how our IT solutions can help you achieve your goals.</p>
+            </div>
+            <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                <div class="text-lg-end">
+                    <a href="contact.html" class="btn btn-dark py-2 px-4">Get In Touch</a>
+                    <a href="appoinment.html" class="btn btn-light py-2 px-4 ms-2">Book Appointment</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call to Action End -->
+
+<!-- Footer Start -->
+<div class="container-fluid footer position-relative bg-dark text-white-50 py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row g-5 py-5">
+            <div class="col-lg-6 pe-lg-5">
+                <a href="index.html" class="navbar-brand">
                     <a href="index.html" class="navbar-brand">
                         <h1 class="h1 text-primary mb-0">MUKOTECH<span class="text-white">NETWORKS</span></h1>
                     </a>
-                    <p class="fs-5 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor.</p>
-                    <p><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-2"></i>+2609967832706</p>
-                    <p><i class="fa fa-envelope me-2"></i>mukotechnetworks@gmail.com</p>
-                    <div class="d-flex mt-4">
-                        <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <p class="fs-5 mb-4">Empowering Innovation through Technology One Byte at a Time.
+                        <br>(Modern and tech-forward; implies full-service delivery.)</p>
+                <p><i class="fa fa-map-marker-alt me-2"></i>H70 Ndeke-Village, Kitwe, Zambia</p>
+                <p><i class="fa fa-phone-alt me-2"></i>+260 967 832 706</p>
+                <p><i class="fa fa-envelope me-2"></i>info@mukotechnetworks.com</p>
+                <div class="d-flex mt-4">
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
-                <div class="col-lg-6 ps-lg-5">
-                    <div class="row g-5">
-                        <div class="col-sm-6">
-                            <h4 class="text-light mb-4">Quick Links</h4>
-                            <a class="btn btn-link" href="">About Us</a>
-                            <a class="btn btn-link" href="">Contact Us</a>
-                            <a class="btn btn-link" href="">Our Services</a>
-                            <a class="btn btn-link" href="">Terms & Condition</a>
-                            <a class="btn btn-link" href="">Support</a>
-                        </div>
-                        <div class="col-sm-6">
-                            <h4 class="text-light mb-4">Popular Links</h4>
-                            <a class="btn btn-link" href="">About Us</a>
-                            <a class="btn btn-link" href="">Contact Us</a>
-                            <a class="btn btn-link" href="">Our Services</a>
-                            <a class="btn btn-link" href="">Terms & Condition</a>
-                            <a class="btn btn-link" href="">Support</a>
-                        </div>
-                        <div class="col-sm-12">
-                            <h4 class="text-light mb-4">Newsletter</h4>
-                            <div class="w-100">
-                                <div class="input-group">
-                                    <input type="text" class="form-control border-0 py-3 px-4" style="background: rgba(255, 255, 255, .1);" placeholder="Your Email Address"><button class="btn btn-primary px-4">Sign Up</button>
-                                </div>
+            </div>
+            <div class="col-lg-6 ps-lg-5">
+                <div class="row g-5">
+                    <div class="col-sm-6">
+                        <h4 class="text-light mb-4">Quick Links</h4>
+                        <a class="btn btn-link" href="about.html">About Us</a>
+                        <a class="btn btn-link" href="contact.html">Contact Us</a>
+                        <a class="btn btn-link" href="service.html">Our Services</a>
+                        <a class="btn btn-link" href="policy.html">Privacy Policy</a>
+                        <a class="btn btn-link" href="#">Support</a>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4 class="text-light mb-4">Our Services</h4>
+                        <a class="btn btn-link" href="service.html">IT Support</a>
+                        <a class="btn btn-link" href="service.html">Network Solutions</a>
+                        <a class="btn btn-link" href="service.html">Web Development</a>
+                        <a class="btn btn-link" href="e_commerce.html">E-Commerce</a>
+                        <a class="btn btn-link" href="service.html">Graphics Design</a>
+                    </div>
+                    <div class="col-sm-12">
+                        <h4 class="text-light mb-4">Newsletter</h4>
+                        <div class="w-100">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-0 py-3 px-4" style="background: rgba(255, 255, 255, .1);" placeholder="Your Email Address">
+                                <button class="btn btn-primary px-4">Subscribe</button>
                             </div>
                         </div>
                     </div>
@@ -393,41 +946,72 @@
             </div>
         </div>
     </div>
-    <!-- Footer End -->
+</div>
+<!-- Footer End -->
 
-
-    <!-- Copyright Start -->
-    <div class="container-fluid copyright bg-dark text-white-50 py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; <a href="#">MUKOTECH NETWORKS</a>. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    <p class="mb-0">Designed by <a href="https://htmlcodex.com">MUKOTECH</a><br>Distributed by <a href="https://themewagon.com">MUKOTECH NETWORKS</a></p>
-                </div>
+<!-- Copyright Start -->
+<div class="container-fluid copyright bg-dark text-white-50 py-4">
+    <div class="container">
+        <div class="row">
+            <div class="text-center">
+                <p class="text-muted mb-0">&copy; 2025 Powered by  MUKOTECH NETWORKS. All rights reserved. | Privacy Policy | Terms of Service</p>
             </div>
         </div>
     </div>
-    <!-- Copyright End -->
+</div>
+</div>
+<!-- Copyright End -->
 
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<!-- Dynamic Active Link Highlighting -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get current page URL
+        const currentPage = window.location.pathname.split('/').pop();
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+        // Get all navigation links
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+        // Loop through each link
+        navLinks.forEach(link => {
+            // Get the href attribute and compare with current page
+            const linkHref = link.getAttribute('href');
+
+            // Check if the link's href matches the current page
+            if (linkHref === currentPage) {
+                // Add active class to the matching link
+                link.classList.add('active');
+            } else {
+                // Remove active class from other links
+                link.classList.remove('active');
+            }
+        });
+
+        // Preloader functionality
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(function() {
+                preloader.classList.add('fade-out');
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 1500); // Adjust time as needed
+        });
+    });
+</script>
 </body>
-
 </html>

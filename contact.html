@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>MUKOTECH NETWORKS</title>
+    <title>MUKOTECH NETWORKS - Contact</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Red+Rose:wght@600;700&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -30,14 +30,244 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Logo Animation Container */
+        .logo-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main Logo */
+        .logo-container img {
+            width: 140px;
+            height: auto;
+            z-index: 20;
+            position: relative;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.9; }
+        }
+
+        /* Atom Animation */
+        .atom {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        /* Electron Orbit Paths */
+        .orbit {
+            position: absolute;
+            border: 1.5px solid;
+            border-radius: 50%;
+            animation: rotate linear infinite;
+            transform-origin: center;
+        }
+
+        /* First Orbit (Orange) */
+        .orbit-1 {
+            width: 200px;
+            height: 200px;
+            border-color: rgba(251, 133, 5, 0.3);
+            top: 10px;
+            left: 10px;
+            animation-duration: 18s;
+        }
+
+        /* Second Orbit (Dark) */
+        .orbit-2 {
+            width: 160px;
+            height: 160px;
+            border-color: rgba(51, 51, 51, 0.3);
+            top: 30px;
+            left: 30px;
+            animation-direction: reverse;
+            animation-duration: 14s;
+        }
+
+        /* Third Orbit (Orange) */
+        .orbit-3 {
+            width: 120px;
+            height: 120px;
+            border-color: rgba(251, 133, 5, 0.3);
+            top: 50px;
+            left: 50px;
+            animation-duration: 10s;
+        }
+
+        /* Electrons */
+        .electron {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #FB8505;
+            border-radius: 50%;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 6px #FB8505;
+        }
+
+        .orbit-2 .electron {
+            background-color: #333;
+            box-shadow: 0 0 6px #333;
+            width: 6px;
+            height: 6px;
+            top: -3px;
+        }
+
+        .orbit-3 .electron {
+            background-color: #FB8505;
+            box-shadow: 0 0 8px #FB8505;
+            width: 10px;
+            height: 10px;
+            top: -5px;
+        }
+
+        /* Connecting Lines */
+        .atom::before {
+            content: '';
+            position: absolute;
+            width: 1.5px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(251, 133, 5, 0.2), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .atom::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1.5px;
+            background: linear-gradient(to right, transparent, rgba(51, 51, 51, 0.2), transparent);
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        /* Rotation Animation */
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Loading Text */
+        .loading-text {
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            color: #FB8505;
+            font-size: 16px;
+            font-weight: 500;
+            animation: fadeInOut 2s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Hide preloader when loaded */
+        .loaded #preloader {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Custom Styles */
+        .text-primary {
+            color: #FB8505 !important;
+        }
+
+        .btn-primary {
+            background-color: #FB8505;
+            border-color: #FB8505;
+        }
+
+        .btn-primary:hover {
+            background-color: #e07a04;
+            border-color: #e07a04;
+        }
+
+        .navbar-light .navbar-nav .nav-link.active {
+            color: #FB8505 !important;
+            font-weight: 500;
+        }
+
+        .icon-box-light {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+<!-- Preloader with Atom Animation -->
+<div id="preloader">
+    <div class="logo-container">
+        <!-- Atom Structure -->
+        <div class="atom">
+            <div class="orbit orbit-1">
+                <div class="electron"></div>
+            </div>
+            <div class="orbit orbit-2">
+                <div class="electron"></div>
+            </div>
+            <div class="orbit orbit-3">
+                <div class="electron"></div>
+            </div>
+        </div>
+        <!-- Logo -->
+        <img src="img/MUKOTECH NEW LOGO44.png" alt="MUKOTECH NETWORKS Logo">
+        <div class="loading-text">Loading...</div>
     </div>
+</div>
+
+<!-- Main Content -->
+<div id="content">
+    <!-- Spinner Start -->
+<!--    <div id="spinner"-->
+<!--         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">-->
+<!--        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>-->
+<!--    </div>-->
     <!-- Spinner End -->
 
 
@@ -46,7 +276,7 @@
         <div class="container">
             <div class="d-flex justify-content-between">
                 <div>
-                    <small class="me-3"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
+                    <small class="me-3"><i class="fa fa-map-marker-alt me-2"></i>H70 Ndeke-Village, Copperbelt, Zambia</small>
                     <small class="me-3"><i class="fa fa-clock me-2"></i>Mon-Sat 09am-5pm, Sun Closed</small>
                 </div>
                 <nav class="breadcrumb mb-0">
@@ -66,19 +296,19 @@
         <div class="container pb-2">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="d-flex">
-                    <i class="bi bi-telephone-inbound fs-2"></i>
-                    <div class="ms-3">
-                        <h5 class="text-white mb-0">Call Now</h5>
-                        <span>+012 345 6789</span>
-                    </div>
+<!--                    <i class="bi bi-telephone-inbound fs-2"></i>-->
+<!--                    <div class="ms-3">-->
+<!--                        <h5 class="text-white mb-0">Call Now</h5>-->
+<!--                        <span>+260967832706</span>-->
+<!--                    </div>-->
                 </div>
                 <a href="index.html" class="h1 text-white mb-0">MUKOTECH<span class="text-dark">NETWORKS</span></a>
                 <div class="d-flex">
-                    <i class="bi bi-envelope fs-2"></i>
-                    <div class="ms-3">
-                        <h5 class="text-white mb-0">Mail Now</h5>
-                        <span>mukotech.networks@gmail.com</span>
-                    </div>
+<!--                    <i class="bi bi-envelope fs-2"></i>-->
+<!--                    <div class="ms-3">-->
+<!--                        <h5 class="text-white mb-0">Mail Now</h5>-->
+<!--                        <span>mukotech.networks@gmail.com</span>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -91,28 +321,21 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-lg-0 px-lg-3">
                 <a href="index.html" class="navbar-brand d-lg-none">
-                    <h1 class="text-primary m-0">MUKOTECH<span class="text-dark">NETWORKS</span></h1>
+                    <img src="img/MUKOTECH NEW LOGO44.png" alt="MUKOTECH Logo" style="height: 40px;">
                 </a>
                 <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
+                        data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
                         <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu bg-light m-0">
-                                <a href="feature.html" class="dropdown-item">Features</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="appoinment.html" class="dropdown-item">Appoinment</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
+                        <a href="service.html" class="nav-item nav-link">IT Services</a>
+                        <a href="appoinment.html" class="nav-item nav-link">Appointment</a>
+                        <a href="e_commerce.html" class="nav-item nav-link">E-Commerce</a>
                         <a href="contact.html" class="nav-item nav-link active">Contact</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="policy.html" class="nav-item nav-link">Company Policy</a>
                     </div>
                     <div class="ms-auto d-none d-lg-flex">
                         <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-facebook-f"></i></a>
@@ -130,12 +353,12 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center py-5 mt-4">
-            <h1 class="display-2 text-white mb-3 animated slideInDown">Contact</h1>
+            <h1 class="display-2 text-white mb-3 animated slideInDown">Contact Us</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item" aria-current="page">Contact</li>
+                    <li class="breadcrumb-item active" aria-current="page">Contact</li>
                 </ol>
             </nav>
         </div>
@@ -147,23 +370,23 @@
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="display-6 mb-3">Have Any Query? Feel Free To Contact Us</h1>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor.</p>
+                <h1 class="display-6 mb-3">Have a Question? We're Here to Help!</h1>
+                <p class="mb-5">Feel free to reach out to us anytime. Whether you have a query about our services, need technical support, or want to discuss a project—MUKOTECH NETWORKS is just a message away.</p>
             </div>
             <div class="row contact-info position-relative g-0 mb-5">
                 <div class="col-lg-6">
-                    <a href="tel:+0123456789" class="d-flex justify-content-lg-center bg-primary p-4">
+                    <a href="tel:+260967832706" class="d-flex justify-content-lg-center bg-primary p-4">
                         <div class="icon-box-light flex-shrink-0">
                             <i class="bi bi-phone text-dark"></i>
                         </div>
                         <div class="ms-3">
                             <h5 class="text-white">Call Us</h5>
-                            <h2 class="text-white mb-0">+260967832706</h2>
+                            <h2 class="text-white mb-0">+260 967 832 706</h2>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-6">
-                    <a href="mailto:info@example.com" class="d-flex justify-content-lg-center bg-primary p-4">
+                    <a href="mailto:mukotech.networks@gmail.com" class="d-flex justify-content-lg-center bg-primary p-4">
                         <div class="icon-box-light flex-shrink-0">
                             <i class="bi bi-envelope text-dark"></i>
                         </div>
@@ -176,30 +399,30 @@
             </div>
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-                    <form>
+                    <p class="mb-4">Get in touch with MUKOTECH NETWORKS for all your IT solutions and technology needs. Our team is ready to assist you with networking, CCTV installations, e-commerce solutions, and more.</p>
+                    <form id="contactForm">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
                                     <label for="name">Your Name</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email" required>
                                     <label for="email">Your Email</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input type="text" class="form-control" id="subject" placeholder="Subject" required>
                                     <label for="subject">Subject</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 200px"></textarea>
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 200px" required></textarea>
                                     <label for="message">Message</label>
                                 </div>
                             </div>
@@ -211,9 +434,9 @@
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <iframe class="w-100 h-100"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
-                    frameborder="0" style="min-height: 300px; border:0;" allowfullscreen="" aria-hidden="false"
-                    tabindex="0"></iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                            frameborder="0" style="min-height: 300px; border:0;" allowfullscreen="" aria-hidden="false"
+                            tabindex="0"></iframe>
                 </div>
             </div>
         </div>
@@ -229,8 +452,9 @@
                     <a href="index.html" class="navbar-brand">
                         <h1 class="h1 text-primary mb-0">MUKOTECH<span class="text-white">NETWORKS</span></h1>
                     </a>
-                    <p class="fs-5 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <p><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</p>
+                    <p class="fs-5 mb-4">Empowering Innovation through Technology One Byte at a Time.
+                        <br>(Modern and tech-forward; implies full-service delivery.)</p>
+                    <p><i class="fa fa-map-marker-alt me-2"></i>H70 Ndeke-Village, Copperbelt, Zambia</p>
                     <p><i class="fa fa-phone-alt me-2"></i>+260967832706</p>
                     <p><i class="fa fa-envelope me-2"></i>mukotech.networks@gmail.com</p>
                     <div class="d-flex mt-4">
@@ -244,25 +468,26 @@
                     <div class="row g-5">
                         <div class="col-sm-6">
                             <h4 class="text-light mb-4">Quick Links</h4>
-                            <a class="btn btn-link" href="">About Us</a>
-                            <a class="btn btn-link" href="">Contact Us</a>
-                            <a class="btn btn-link" href="">Our Services</a>
-                            <a class="btn btn-link" href="">Terms & Condition</a>
-                            <a class="btn btn-link" href="">Support</a>
+                            <a class="btn btn-link" href="about.html">About Us</a>
+                            <a class="btn btn-link" href="contact.html">Contact Us</a>
+                            <a class="btn btn-link" href="service.html">Our Services</a>
+                            <a class="btn btn-link" href="#">Terms & Condition</a>
+                            <a class="btn btn-link" href="#">Support</a>
                         </div>
                         <div class="col-sm-6">
                             <h4 class="text-light mb-4">Popular Links</h4>
-                            <a class="btn btn-link" href="">About Us</a>
-                            <a class="btn btn-link" href="">Contact Us</a>
-                            <a class="btn btn-link" href="">Our Services</a>
-                            <a class="btn btn-link" href="">Terms & Condition</a>
-                            <a class="btn btn-link" href="">Support</a>
+                            <a class="btn btn-link" href="index.html">Home</a>
+                            <a class="btn btn-link" href="service.html">Services</a>
+                            <a class="btn btn-link" href="#">E-Commerce</a>
+                            <a class="btn btn-link" href="appoinment.html">Appointment</a>
+                            <a class="btn btn-link" href="contact.html">Contact</a>
                         </div>
                         <div class="col-sm-12">
                             <h4 class="text-light mb-4">Newsletter</h4>
                             <div class="w-100">
                                 <div class="input-group">
-                                    <input type="text" class="form-control border-0 py-3 px-4" style="background: rgba(255, 255, 255, .1);" placeholder="Your Email Address"><button class="btn btn-primary px-4">Sign Up</button>
+                                    <input type="text" class="form-control border-0 py-3 px-4" style="background: rgba(255, 255, 255, .1);" placeholder="Your Email Address">
+                                    <button class="btn btn-primary px-4">Sign Up</button>
                                 </div>
                             </div>
                         </div>
@@ -278,17 +503,14 @@
     <div class="container-fluid copyright bg-dark text-white-50 py-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; <a href="#">MUKOTECH NETWORKS</a>. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    <p class="mb-0">Designed by <a href="https://htmlcodex.com">MUKOTECH</a><br>Distributed by <a href="https://themewagon.com">MUKOTECH NETWORKS</a></p>
+                <div class="text-center">
+                    <p class="text-muted mb-0">&copy; 2025 Powered by  MUKOTECH NETWORKS. All rights reserved. | Privacy Policy | Terms of Service</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Copyright End -->
+</div>
+<!-- Copyright End -->
 
 
     <!-- Back to Top -->
@@ -306,6 +528,52 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-</body>
 
+    <!-- Custom JavaScript -->
+    <script>
+        // Preloader removal script
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.body.classList.add("loaded");
+                setTimeout(function() {
+                    document.getElementById("preloader").style.display = "none";
+                }, 500);
+            }, 2000);
+        });
+
+        // Remove spinner after page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('spinner').style.display = 'none';
+            }, 500);
+        });
+
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you, ${name}! Your message has been received. We'll contact you soon at ${email}.`);
+
+            // Reset form
+            this.reset();
+        });
+
+        // Dynamic active link highlighting
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+            if (link.href === window.location.href) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    </script>
+</body>
 </html>

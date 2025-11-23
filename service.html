@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Red+Rose:wght@600;700&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -30,14 +30,223 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Logo Animation Container */
+        .logo-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main Logo */
+        .logo-container img {
+            width: 140px;
+            height: auto;
+            z-index: 20;
+            position: relative;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.9; }
+        }
+
+        /* Atom Animation */
+        .atom {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        /* Electron Orbit Paths */
+        .orbit {
+            position: absolute;
+            border: 1.5px solid;
+            border-radius: 50%;
+            animation: rotate linear infinite;
+            transform-origin: center;
+        }
+
+        /* First Orbit (Orange) */
+        .orbit-1 {
+            width: 200px;
+            height: 200px;
+            border-color: rgba(251, 133, 5, 0.3);
+            top: 10px;
+            left: 10px;
+            animation-duration: 18s;
+        }
+
+        /* Second Orbit (Dark) */
+        .orbit-2 {
+            width: 160px;
+            height: 160px;
+            border-color: rgba(51, 51, 51, 0.3);
+            top: 30px;
+            left: 30px;
+            animation-direction: reverse;
+            animation-duration: 14s;
+        }
+
+        /* Third Orbit (Orange) */
+        .orbit-3 {
+            width: 120px;
+            height: 120px;
+            border-color: rgba(251, 133, 5, 0.3);
+            top: 50px;
+            left: 50px;
+            animation-duration: 10s;
+        }
+
+        /* Electrons */
+        .electron {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #FB8505;
+            border-radius: 50%;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 6px #FB8505;
+        }
+
+        .orbit-2 .electron {
+            background-color: #333;
+            box-shadow: 0 0 6px #333;
+            width: 6px;
+            height: 6px;
+            top: -3px;
+        }
+
+        .orbit-3 .electron {
+            background-color: #FB8505;
+            box-shadow: 0 0 8px #FB8505;
+            width: 10px;
+            height: 10px;
+            top: -5px;
+        }
+
+        /* Connecting Lines */
+        .atom::before {
+            content: '';
+            position: absolute;
+            width: 1.5px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(251, 133, 5, 0.2), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .atom::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1.5px;
+            background: linear-gradient(to right, transparent, rgba(51, 51, 51, 0.2), transparent);
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        /* Rotation Animation */
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Loading Text */
+        .loading-text {
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            color: #FB8505;
+            font-size: 16px;
+            font-weight: 500;
+            animation: fadeInOut 2s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Hide preloader when loaded */
+        .loaded #preloader {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Custom Styles */
+        .text-primary {
+            color: #FB8505 !important;
+        }
+        .nav-item .nav-link.active {
+            color: #FB8505 !important;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+<!-- Preloader with Atom Animation -->
+<div id="preloader">
+    <div class="logo-container">
+        <!-- Atom Structure -->
+        <div class="atom">
+            <div class="orbit orbit-1">
+                <div class="electron"></div>
+            </div>
+            <div class="orbit orbit-2">
+                <div class="electron"></div>
+            </div>
+            <div class="orbit orbit-3">
+                <div class="electron"></div>
+            </div>
+        </div>
+        <!-- Logo -->
+        <img src="img/MUKOTECH NEW LOGO44.png" alt="MUKOTECH NETWORKS Logo">
+        <div class="loading-text">Loading...</div>
     </div>
+</div>
+
+<!-- Main Content -->
+<div id="content">
+    <!-- Spinner Start -->
+<!--    <div id="spinner"-->
+<!--         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">-->
+<!--        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>-->
+<!--    </div>-->
     <!-- Spinner End -->
 
 
@@ -46,11 +255,11 @@
         <div class="container">
             <div class="d-flex justify-content-between">
                 <div>
-                    <small class="me-3"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
+                    <small class="me-3"><i class="fa fa-map-marker-alt me-2"></i>H70 Ndeke-Village, Copperbelt, Zambia</small>
                     <small class="me-3"><i class="fa fa-clock me-2"></i>Mon-Sat 09am-5pm, Sun Closed</small>
                 </div>
                 <nav class="breadcrumb mb-0">
-                    <a class="breadcrumb-item small text-body" href="#">Career</a>
+                    <a class="breadcrumb-item small text-body" href="#">Work appointment</a>
                     <a class="breadcrumb-item small text-body" href="#">Support</a>
                     <a class="breadcrumb-item small text-body" href="#">Terms</a>
                     <a class="breadcrumb-item small text-body" href="#">FAQs</a>
@@ -66,19 +275,19 @@
         <div class="container pb-2">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="d-flex">
-                    <i class="bi bi-telephone-inbound fs-2"></i>
-                    <div class="ms-3">
-                        <h5 class="text-white mb-0">Call Now</h5>
-                        <span>+260967832707</span>
-                    </div>
+<!--                    <i class="bi bi-telephone-inbound fs-2"></i>-->
+<!--                    <div class="ms-3">-->
+<!--                        <h5 class="text-white mb-0">Call Now</h5>-->
+<!--                        <span>+260967832706</span>-->
+<!--                    </div>-->
                 </div>
                 <a href="index.html" class="h1 text-white mb-0">MUKOTECH<span class="text-dark">NETWORKS</span></a>
                 <div class="d-flex">
-                    <i class="bi bi-envelope fs-2"></i>
-                    <div class="ms-3">
-                        <h5 class="text-white mb-0">Mail Now</h5>
-                        <span>mukotech.networks@gmail.com</span>
-                    </div>
+<!--                    <i class="bi bi-envelope fs-2"></i>-->
+<!--                    <div class="ms-3">-->
+<!--                        <h5 class="text-white mb-0">Mail Now</h5>-->
+<!--                        <span>mukotech.networks@gmail.com</span>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -91,28 +300,21 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-lg-0 px-lg-3">
                 <a href="index.html" class="navbar-brand d-lg-none">
-                    <h1 class="text-primary m-0">MUKOTECH<span class="text-dark">NETWORKS</span></h1>
+                    <img src="img/MUKOTECH NEW LOGO44.png" alt="MUKOTECH Logo" style="height: 40px;">
                 </a>
                 <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
+                        data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
                         <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link active">Services</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu bg-light m-0">
-                                <a href="feature.html" class="dropdown-item">Features</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="appoinment.html" class="dropdown-item">Appoinment</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
+                        <a href="service.html" class="nav-item nav-link active">IT Services</a>
+                        <a href="appoinment.html" class="nav-item nav-link">Appointment</a>
+                        <a href="e_commerce.html" class="nav-item nav-link">E-Commerce</a>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="policy.html" class="nav-item nav-link">Company Policy</a>
                     </div>
                     <div class="ms-auto d-none d-lg-flex">
                         <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-facebook-f"></i></a>
@@ -142,93 +344,124 @@
     </div>
     <!-- Page Header End -->
 
-    
+
     <!-- Service Start -->
     <div class="container-fluid container-service py-5">
         <div class="container py-5">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="display-6 mb-3">Reliable & High-Quality Laboratory Service</h1>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor.</p>
+                <h1 class="display-6 mb-3">Complete IT Solutions & Services</h1>
+                <p class="mb-5">MUKOTECH NETWORKS provides end-to-end technology solutions to empower your business in the digital landscape.</p>
             </div>
             <div class="row g-4">
+                <!-- Networking Solutions -->
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item">
                         <div class="icon-box-primary mb-4">
-                            <i class="bi bi-heart-pulse text-dark"></i>
+                            <i class="bi bi-router-fill text-dark"></i>
                         </div>
-                        <h5 class="mb-3">Pathology Testing</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
-                        <a class="btn btn-light px-3" href="">Read More<i class="bi bi-chevron-double-right ms-1"></i></a>
+                        <h5 class="mb-3">Network Infrastructure</h5>
+                        <p class="mb-4">Enterprise-grade networking solutions including SD-WAN, fiber optics, and wireless deployments...</p>
+                        <button class="btn btn-light px-3" data-bs-toggle="modal" data-bs-target="#serviceModal1">
+                            Read More <i class="bi bi-chevron-double-right ms-1"></i>
+                        </button>
                     </div>
                 </div>
+
+                <!-- Security Solutions -->
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item">
                         <div class="icon-box-primary mb-4">
-                            <i class="bi bi-lungs text-dark"></i>
+                            <i class="bi bi-shield-lock text-dark"></i>
                         </div>
-                        <h5 class="mb-3">Microbiology Tests</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
-                        <a class="btn btn-light px-3" href="">Read More<i class="bi bi-chevron-double-right ms-1"></i></a>
+                        <h5 class="mb-3">Security Solutions</h5>
+                        <p class="mb-4">Comprehensive security systems including CCTV, access control, and cybersecurity services...</p>
+                        <button class="btn btn-light px-3" data-bs-toggle="modal" data-bs-target="#serviceModal2">
+                            Read More <i class="bi bi-chevron-double-right ms-1"></i>
+                        </button>
                     </div>
                 </div>
+
+                <!-- Mobile Applications -->
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item">
                         <div class="icon-box-primary mb-4">
-                            <i class="bi bi-virus text-dark"></i>
+                            <i class="bi bi-phone text-dark"></i>
                         </div>
-                        <h5 class="mb-3">Biochemistry Tests</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
-                        <a class="btn btn-light px-3" href="">Read More<i class="bi bi-chevron-double-right ms-1"></i></a>
+                        <h5 class="mb-3">Mobile Applications</h5>
+                        <p class="mb-4">Custom mobile app development for iOS and Android platforms with native and hybrid solutions...</p>
+                        <button class="btn btn-light px-3" data-bs-toggle="modal" data-bs-target="#serviceModal3">
+                            Read More <i class="bi bi-chevron-double-right ms-1"></i>
+                        </button>
                     </div>
                 </div>
+
+                <!-- Graphics Design -->
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="service-item">
                         <div class="icon-box-primary mb-4">
-                            <i class="bi bi-capsule-pill text-dark"></i>
+                            <i class="bi bi-palette text-dark"></i>
                         </div>
-                        <h5 class="mb-3">Histopatology Tests</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
-                        <a class="btn btn-light px-3" href="">Read More<i class="bi bi-chevron-double-right ms-1"></i></a>
+                        <h5 class="mb-3">Graphics Design</h5>
+                        <p class="mb-4">Professional design services including logos, branding, marketing materials, and UI/UX design...</p>
+                        <button class="btn btn-light px-3" data-bs-toggle="modal" data-bs-target="#serviceModal4">
+                            Read More <i class="bi bi-chevron-double-right ms-1"></i>
+                        </button>
                     </div>
                 </div>
+
+                <!-- CCTV Installation -->
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item">
                         <div class="icon-box-primary mb-4">
-                            <i class="bi bi-capsule text-dark"></i>
+                            <i class="bi bi-camera-video text-dark"></i>
                         </div>
-                        <h5 class="mb-3">Urine Tests</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
-                        <a class="btn btn-light px-3" href="">Read More<i class="bi bi-chevron-double-right ms-1"></i></a>
+                        <h5 class="mb-3">CCTV Installation</h5>
+                        <p class="mb-4">Professional surveillance system installation with 4K cameras, NVR systems, and remote monitoring...</p>
+                        <button class="btn btn-light px-3" data-bs-toggle="modal" data-bs-target="#serviceModal5">
+                            Read More <i class="bi bi-chevron-double-right ms-1"></i>
+                        </button>
                     </div>
                 </div>
+
+                <!-- API Development -->
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item">
                         <div class="icon-box-primary mb-4">
-                            <i class="bi bi-prescription2 text-dark"></i>
+                            <i class="bi bi-plug text-dark"></i>
                         </div>
-                        <h5 class="mb-3">Blood Tests</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
-                        <a class="btn btn-light px-3" href="">Read More<i class="bi bi-chevron-double-right ms-1"></i></a>
+                        <h5 class="mb-3">API Development</h5>
+                        <p class="mb-4">Custom RESTful and GraphQL API development, integration, and documentation services...</p>
+                        <button class="btn btn-light px-3" data-bs-toggle="modal" data-bs-target="#serviceModal6">
+                            Read More <i class="bi bi-chevron-double-right ms-1"></i>
+                        </button>
                     </div>
                 </div>
+
+                <!-- Microsoft Office -->
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item">
                         <div class="icon-box-primary mb-4">
-                            <i class="bi bi-clipboard2-pulse text-dark"></i>
+                            <i class="bi bi-file-earmark-word text-dark"></i>
                         </div>
-                        <h5 class="mb-3">Fever Tests</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
-                        <a class="btn btn-light px-3" href="">Read More<i class="bi bi-chevron-double-right ms-1"></i></a>
+                        <h5 class="mb-3">Microsoft Office</h5>
+                        <p class="mb-4">Installation, configuration, and training for all Microsoft Office products and 365 solutions...</p>
+                        <button class="btn btn-light px-3" data-bs-toggle="modal" data-bs-target="#serviceModal7">
+                            Read More <i class="bi bi-chevron-double-right ms-1"></i>
+                        </button>
                     </div>
                 </div>
+
+                <!-- OS Installation -->
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="service-item">
                         <div class="icon-box-primary mb-4">
-                            <i class="bi bi-file-medical text-dark"></i>
+                            <i class="bi bi-windows text-dark"></i>
                         </div>
-                        <h5 class="mb-3">Allergy Tests</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue.</p>
-                        <a class="btn btn-light px-3" href="">Read More<i class="bi bi-chevron-double-right ms-1"></i></a>
+                        <h5 class="mb-3">OS Installation</h5>
+                        <p class="mb-4">Professional installation of Windows, Linux, macOS, Ubuntu with driver setup and optimization...</p>
+                        <button class="btn btn-light px-3" data-bs-toggle="modal" data-bs-target="#serviceModal8">
+                            Read More <i class="bi bi-chevron-double-right ms-1"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -236,52 +469,671 @@
     </div>
     <!-- Service End -->
 
-
-    <!-- Testimonial Start -->
-    <div class="container-fluid testimonial py-5">
-        <div class="container pt-5">
-            <div class="row gy-5 gx-0">
-                <div class="col-lg-6 pe-lg-5 wow fadeIn" data-wow-delay="0.3s">
-                    <h1 class="display-6 text-white mb-4">What Clients Say About Our Lab Services!</h1>
-                    <p class="text-white mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor.</p>
-                    <a href="" class="btn btn-primary py-3 px-5">More Testimonials</a>
+    <!-- Service Modals -->
+    <!-- Network Infrastructure Modal -->
+    <div class="modal fade" id="serviceModal1" tabindex="-1" aria-labelledby="serviceModalLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="serviceModalLabel1"><i class="bi bi-router-fill me-2"></i>Network Infrastructure Solutions</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="col-lg-6 mb-n5 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="bg-white p-5">
-                        <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay="0.1s">
-                            <div class="testimonial-item">
-                                <div class="icon-box-primary mb-4">
-                                    <i class="bi bi-chat-left-quote text-dark"></i>
-                                </div>
-                                <p class="fs-5 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor. Quisque vel lorem porttitor, malesuada arcu quis, fringilla risus. Pellentesque eu consequat augue.</p>
-                                <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0" src="img/testimonial-1.jpg" alt="">
-                                    <div class="ps-3">
-                                        <h5 class="mb-1">Client Name</h5>
-                                        <span class="text-primary">Profession</span>
-                                    </div>
-                                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" class="img-fluid rounded mb-3" alt="Network Infrastructure">
+                            <div class="p-3 bg-light rounded">
+                                <h6><i class="bi bi-check-circle-fill text-primary me-2"></i>Key Benefits</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-check text-success me-2"></i>99.9% network uptime guarantee</li>
+                                    <li><i class="bi bi-check text-success me-2"></i>Military-grade encryption</li>
+                                    <li><i class="bi bi-check text-success me-2"></i>24/7 monitoring and support</li>
+                                </ul>
                             </div>
-                            <div class="testimonial-item">
-                                <div class="icon-box-primary mb-4">
-                                    <i class="bi bi-chat-left-quote text-dark"></i>
-                                </div>
-                                <p class="fs-5 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor. Quisque vel lorem porttitor, malesuada arcu quis, fringilla risus. Pellentesque eu consequat augue.</p>
-                                <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0" src="img/testimonial-2.jpg" alt="">
-                                    <div class="ps-3">
-                                        <h5 class="mb-1">Client Name</h5>
-                                        <span class="text-primary">Profession</span>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-primary">Complete Network Solutions</h4>
+                            <p>We design and implement robust network infrastructures tailored to your business needs:</p>
+                            <div class="mb-4">
+                                <h6><i class="bi bi-wifi text-primary me-2"></i>Wireless Solutions</h6>
+                                <ul>
+                                    <li>Enterprise WiFi 6 deployments</li>
+                                    <li>Mesh network configurations</li>
+                                    <li>Outdoor wireless coverage</li>
+                                </ul>
+
+                                <h6><i class="bi bi-hdd-stack text-primary me-2"></i>Structured Cabling</h6>
+                                <ul>
+                                    <li>Cat6A and fiber optic installations</li>
+                                    <li>Data center cabling</li>
+                                    <li>Cable management solutions</li>
+                                </ul>
+                            </div>
+                            <div class="alert alert-primary">
+                                <i class="bi bi-info-circle-fill me-2"></i> All implementations include detailed documentation and training.
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Request Network Assessment</button>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Testimonial End -->
+
+    <!-- Security Solutions Modal -->
+    <div class="modal fade" id="serviceModal2" tabindex="-1" aria-labelledby="serviceModalLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title" id="serviceModalLabel2"><i class="bi bi-shield-lock me-2"></i>Security Solutions</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="Security Solutions">
+                            <div class="card border-dark">
+                                <div class="card-header bg-dark text-white">
+                                    <i class="bi bi-shield-check me-2"></i>Security Packages
+                                </div>
+                                <div class="card-body">
+                                    <h6>Essential Protection</h6>
+                                    <ul>
+                                        <li>24/7 Network Monitoring</li>
+                                        <li>Firewall Management</li>
+                                        <li>Vulnerability Scanning</li>
+                                    </ul>
+                                    <hr>
+                                    <h6>Enterprise Security</h6>
+                                    <ul>
+                                        <li>Advanced Threat Protection</li>
+                                        <li>SIEM Implementation</li>
+                                        <li>Security Awareness Training</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-dark">Integrated Security Systems</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="p-3 border rounded h-100">
+                                        <h6><i class="bi bi-camera-video-fill text-dark me-2"></i>Physical Security</h6>
+                                        <ul>
+                                            <li>4K CCTV Systems</li>
+                                            <li>Access Control Systems</li>
+                                            <li>Biometric Authentication</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="p-3 border rounded h-100">
+                                        <h6><i class="bi bi-lock-fill text-dark me-2"></i>Cybersecurity</h6>
+                                        <ul>
+                                            <li>Endpoint Protection</li>
+                                            <li>Email Security</li>
+                                            <li>Network Segmentation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert alert-dark">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i> Our solutions comply with ISO 27001, GDPR, and HIPAA standards.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark">Request Security Audit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Applications Modal -->
+    <div class="modal fade" id="serviceModal3" tabindex="-1" aria-labelledby="serviceModalLabel3" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title" id="serviceModalLabel3"><i class="bi bi-phone me-2"></i>Mobile Application Development</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="Mobile Applications">
+                            <div class="p-3 bg-light rounded">
+                                <h6><i class="bi bi-check-circle-fill text-info me-2"></i>Development Options</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-phone text-info me-2"></i>Native iOS (Swift)</li>
+                                    <li><i class="bi bi-phone text-info me-2"></i>Native Android (Kotlin)</li>
+                                    <li><i class="bi bi-phone text-info me-2"></i>Cross-platform (Flutter/React Native)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-info">Custom Mobile Solutions</h4>
+                            <p>We build high-performance mobile applications for all business needs:</p>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-brush text-info me-2"></i>UI/UX Design</h6>
+                                <ul>
+                                    <li>User-centered design</li>
+                                    <li>Prototyping</li>
+                                    <li>Usability testing</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-gear text-info me-2"></i>Development Services</h6>
+                                <ul>
+                                    <li>Custom app development</li>
+                                    <li>API integration</li>
+                                    <li>Cloud backend</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-graph-up text-info me-2"></i>App Marketing</h6>
+                                <ul>
+                                    <li>App Store optimization</li>
+                                    <li>Launch strategy</li>
+                                    <li>User acquisition</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert alert-info">
+                                <i class="bi bi-google-play me-2"></i> We've published 50+ apps with over 1M combined downloads.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info">Discuss Your App Idea</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Graphics Design Modal -->
+    <div class="modal fade" id="serviceModal4" tabindex="-1" aria-labelledby="serviceModalLabel4" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title" id="serviceModalLabel4"><i class="bi bi-palette me-2"></i>Graphics Design Services</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="Graphics Design">
+                            <div class="card border-warning">
+                                <div class="card-header bg-warning text-dark">
+                                    <i class="bi bi-collection me-2"></i>Design Portfolio
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Logos</span>
+                                        <span>45+</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span>Brand Guides</span>
+                                        <span>30+</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span>Web Designs</span>
+                                        <span>60+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-warning">Creative Design Solutions</h4>
+                            <p>Professional design services to elevate your brand identity:</p>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-brush text-warning me-2"></i>Branding</h6>
+                                <ul>
+                                    <li>Logo design</li>
+                                    <li>Brand guidelines</li>
+                                    <li>Business cards</li>
+                                    <li>Stationery</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-newspaper text-warning me-2"></i>Print Design</h6>
+                                <ul>
+                                    <li>Brochures</li>
+                                    <li>Flyers</li>
+                                    <li>Posters</li>
+                                    <li>Packaging</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-layout-text-window text-warning me-2"></i>Digital Design</h6>
+                                <ul>
+                                    <li>Social media graphics</li>
+                                    <li>Web banners</li>
+                                    <li>Email templates</li>
+                                    <li>UI/UX design</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert alert-warning">
+                                <i class="bi bi-award me-2"></i> Our designs have won 5 international design awards.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-warning">Request Design Quote</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CCTV Installation Modal -->
+    <div class="modal fade" id="serviceModal5" tabindex="-1" aria-labelledby="serviceModalLabel5" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="serviceModalLabel5"><i class="bi bi-camera-video me-2"></i>CCTV Installation Services</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" class="img-fluid rounded mb-3" alt="CCTV Installation">
+                            <div class="p-3 bg-light rounded">
+                                <h6><i class="bi bi-check-circle-fill text-danger me-2"></i>System Features</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-check text-danger me-2"></i>4K Ultra HD Resolution</li>
+                                    <li><i class="bi bi-check text-danger me-2"></i>Night Vision Capability</li>
+                                    <li><i class="bi bi-check text-danger me-2"></i>Weatherproof Housing</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-danger">Professional Surveillance Solutions</h4>
+                            <p>Complete CCTV installation and monitoring services:</p>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-camera text-danger me-2"></i>Camera Systems</h6>
+                                <ul>
+                                    <li>Dome cameras</li>
+                                    <li>Bullet cameras</li>
+                                    <li>PTZ cameras</li>
+                                    <li>Hidden cameras</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-hdd-stack text-danger me-2"></i>Recording Solutions</h6>
+                                <ul>
+                                    <li>NVR systems</li>
+                                    <li>Cloud storage</li>
+                                    <li>Motion-activated recording</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-phone text-danger me-2"></i>Remote Monitoring</h6>
+                                <ul>
+                                    <li>Mobile app access</li>
+                                    <li>Real-time alerts</li>
+                                    <li>Multi-user access</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert alert-danger">
+                                <i class="bi bi-shield-check me-2"></i> Our installations have helped reduce security incidents by 80% for clients.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger">Get Free Site Survey</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API Development Modal -->
+    <div class="modal fade" id="serviceModal6" tabindex="-1" aria-labelledby="serviceModalLabel6" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="serviceModalLabel6"><i class="bi bi-plug me-2"></i>API Development Services</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="API Development">
+                            <div class="card border-success">
+                                <div class="card-header bg-success text-white">
+                                    <i class="bi bi-terminal me-2"></i>API Technologies
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled">
+                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>REST APIs</li>
+                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>GraphQL</li>
+                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>WebSockets</li>
+                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>gRPC</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-success">Powerful API Solutions</h4>
+                            <p>Custom API development and integration services:</p>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-code-square text-success me-2"></i>API Development</h6>
+                                <ul>
+                                    <li>Custom API design</li>
+                                    <li>Microservices architecture</li>
+                                    <li>Third-party API integration</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-shield-check text-success me-2"></i>API Security</h6>
+                                <ul>
+                                    <li>OAuth 2.0 implementation</li>
+                                    <li>Rate limiting</li>
+                                    <li>Data encryption</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-book text-success me-2"></i>API Documentation</h6>
+                                <ul>
+                                    <li>Swagger/OpenAPI</li>
+                                    <li>Interactive docs</li>
+                                    <li>Code samples</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert alert-success">
+                                <i class="bi bi-lightning-charge me-2"></i> Our APIs handle over 10M requests daily for clients.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Discuss API Needs</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- E-Commerce Modal -->
+    <div class="modal fade" id="serviceModal3" tabindex="-1" aria-labelledby="serviceModalLabel3" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="serviceModalLabel3">E-Commerce Solutions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="img/ecommerce.jpg" class="img-fluid rounded mb-3" alt="E-Commerce Solutions">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Complete E-Commerce Solutions</h4>
+                            <p>Our e-commerce services include:</p>
+                            <ul>
+                                <li>Online store setup and configuration</li>
+                                <li>Payment gateway integration</li>
+                                <li>Product catalog management</li>
+                                <li>Inventory management systems</li>
+                                <li>Mobile commerce solutions</li>
+                            </ul>
+                            <p>We help businesses establish and grow their online presence with powerful e-commerce solutions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Microsoft Office Modal -->
+    <div class="modal fade" id="serviceModal7" tabindex="-1" aria-labelledby="serviceModalLabel7" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="serviceModalLabel7"><i class="bi bi-file-earmark-word me-2"></i>Microsoft Office Solutions</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="Microsoft Office">
+                            <div class="p-3 bg-light rounded">
+                                <h6><i class="bi bi-check-circle-fill text-primary me-2"></i>Office Products</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-file-word text-primary me-2"></i>Word</li>
+                                    <li><i class="bi bi-file-excel text-primary me-2"></i>Excel</li>
+                                    <li><i class="bi bi-file-ppt text-primary me-2"></i>PowerPoint</li>
+                                    <li><i class="bi bi-envelope text-primary me-2"></i>Outlook</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-primary">Microsoft Office Services</h4>
+                            <p>Complete Microsoft Office solutions for businesses:</p>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-download text-primary me-2"></i>Installation</h6>
+                                <ul>
+                                    <li>Office 365 setup</li>
+                                    <li>OneDrive configuration</li>
+                                    <li>License activation</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-graph-up text-primary me-2"></i>Advanced Features</h6>
+                                <ul>
+                                    <li>Excel macros & Power Query</li>
+                                    <li>PowerPoint animations</li>
+                                    <li>Word templates</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-people text-primary me-2"></i>Training</h6>
+                                <ul>
+                                    <li>Beginner to advanced courses</li>
+                                    <li>Customized training</li>
+                                    <li>Certification prep</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert alert-primary">
+                                <i class="bi bi-cloud me-2"></i> We support both standalone and 365 subscription versions.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Request Office Support</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hardware Maintenance Service Item -->
+    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="service-item">
+            <div class="icon-box-primary mb-4">
+                <i class="bi bi-tools text-dark"></i>
+            </div>
+            <h5 class="mb-3">Hardware Maintenance</h5>
+            <p class="mb-4">Professional maintenance and repair services for computers, servers, and networking equipment...</p>
+            <button class="btn btn-light px-3" data-bs-toggle="modal" data-bs-target="#hardwareMaintenanceModal">
+                Read More <i class="bi bi-chevron-double-right ms-1"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hardware Maintenance Modal -->
+    <div class="modal fade" id="hardwareMaintenanceModal" tabindex="-1" aria-labelledby="hardwareMaintenanceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="hardwareMaintenanceModalLabel"><i class="bi bi-tools me-2"></i>Hardware Maintenance Services</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="Hardware Maintenance">
+                            <div class="p-3 bg-light rounded">
+                                <h6><i class="bi bi-check-circle-fill text-primary me-2"></i>Service Benefits</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-check text-success me-2"></i>Extended equipment lifespan</li>
+                                    <li><i class="bi bi-check text-success me-2"></i>Reduced downtime</li>
+                                    <li><i class="bi bi-check text-success me-2"></i>Cost-effective repairs</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-primary">Comprehensive Hardware Solutions</h4>
+                            <p>We provide complete hardware maintenance services to keep your systems running optimally:</p>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-pc-display text-primary me-2"></i>Computer Maintenance</h6>
+                                <ul>
+                                    <li>Component cleaning and replacement</li>
+                                    <li>Thermal paste application</li>
+                                    <li>Preventive maintenance checks</li>
+                                    <li>Hardware diagnostics</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-server text-primary me-2"></i>Server Maintenance</h6>
+                                <ul>
+                                    <li>RAID array maintenance</li>
+                                    <li>Power supply checks</li>
+                                    <li>Backplane inspections</li>
+                                    <li>Hot-swap component replacement</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-router text-primary me-2"></i>Networking Equipment</h6>
+                                <ul>
+                                    <li>Switch and router maintenance</li>
+                                    <li>Fiber optic cleaning</li>
+                                    <li>Cooling system checks</li>
+                                    <li>Firmware updates</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert alert-primary">
+                                <i class="bi bi-shield-check me-2"></i> Our technicians are certified by Dell, HP, Cisco, and other major manufacturers.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Schedule Maintenance</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OS Installation Modal -->
+    <div class="modal fade" id="serviceModal8" tabindex="-1" aria-labelledby="serviceModalLabel8" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary text-white">
+                    <h5 class="modal-title" id="serviceModalLabel8"><i class="bi bi-windows me-2"></i>Operating System Installation</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" class="img-fluid rounded mb-3" alt="OS Installation">
+                            <div class="card border-secondary">
+                                <div class="card-header bg-secondary text-white">
+                                    <i class="bi bi-pc-display me-2"></i>Supported Systems
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled">
+                                        <li><i class="bi bi-windows text-secondary me-2"></i>Windows 10/11</li>
+                                        <li><i class="bi bi-ubuntu text-secondary me-2"></i>Ubuntu Linux</li>
+                                        <li><i class="bi bi-apple text-secondary me-2"></i>macOS</li>
+                                        <li><i class="bi bi-terminal text-secondary me-2"></i>Other Linux distros</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-secondary">Professional OS Services</h4>
+                            <p>Complete operating system installation and configuration:</p>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-hdd text-secondary me-2"></i>Installation</h6>
+                                <ul>
+                                    <li>Clean OS installation</li>
+                                    <li>Dual-boot setup</li>
+                                    <li>Driver installation</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-gear text-secondary me-2"></i>Configuration</h6>
+                                <ul>
+                                    <li>User accounts setup</li>
+                                    <li>Network configuration</li>
+                                    <li>Security settings</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6><i class="bi bi-shield-check text-secondary me-2"></i>Optimization</h6>
+                                <ul>
+                                    <li>Performance tuning</li>
+                                    <li>Startup optimization</li>
+                                    <li>Essential software setup</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert alert-secondary">
+                                <i class="bi bi-clock-history me-2"></i> Average installation time: 1-2 hours depending on system.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary">Request OS Installation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
     <!-- Footer Start -->
@@ -292,9 +1144,10 @@
                     <a href="index.html" class="navbar-brand">
                         <h1 class="h1 text-primary mb-0">MUKOTECH<span class="text-white">NETWORKS</span></h1>
                     </a>
-                    <p class="fs-5 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tellus augue, iaculis id elit eget, ultrices pulvinar tortor.</p>
-                    <p><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-2"></i>+2600967832706</p>
+                    <p class="fs-5 mb-4">Empowering Innovation through Technology One Byte at a Time.
+                        <br>(Modern and tech-forward; implies full-service delivery.)</p>
+                    <p><i class="fa fa-map-marker-alt me-2"></i>H70 Ndeke-Village, Copperbelt, Zambia</p>
+                    <p><i class="fa fa-phone-alt me-2"></i>+260967832706</p>
                     <p><i class="fa fa-envelope me-2"></i>mukotech.networks@gmail.com</p>
                     <div class="d-flex mt-4">
                         <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-twitter"></i></a>
@@ -307,19 +1160,19 @@
                     <div class="row g-5">
                         <div class="col-sm-6">
                             <h4 class="text-light mb-4">Quick Links</h4>
-                            <a class="btn btn-link" href="">About Us</a>
-                            <a class="btn btn-link" href="">Contact Us</a>
-                            <a class="btn btn-link" href="">Our Services</a>
-                            <a class="btn btn-link" href="">Terms & Condition</a>
-                            <a class="btn btn-link" href="">Support</a>
+                            <a class="btn btn-link" href="index.html">Home</a>
+                            <a class="btn btn-link" href="service.html">Services</a>
+                            <a class="btn btn-link" href="about.html">About Us</a>
+                            <a class="btn btn-link" href="contact.html">Contact</a>
+                            <a class="btn btn-link" href="#">Support</a>
                         </div>
                         <div class="col-sm-6">
-                            <h4 class="text-light mb-4">Popular Links</h4>
-                            <a class="btn btn-link" href="">About Us</a>
-                            <a class="btn btn-link" href="">Contact Us</a>
-                            <a class="btn btn-link" href="">Our Services</a>
-                            <a class="btn btn-link" href="">Terms & Condition</a>
-                            <a class="btn btn-link" href="">Support</a>
+                            <h4 class="text-light mb-4">Our Services</h4>
+                            <a class="btn btn-link" href="#">Networking</a>
+                            <a class="btn btn-link" href="#">CCTV Installation</a>
+                            <a class="btn btn-link" href="#">E-Commerce</a>
+                            <a class="btn btn-link" href="#">Web Development</a>
+                            <a class="btn btn-link" href="#">IT Support</a>
                         </div>
                         <div class="col-sm-12">
                             <h4 class="text-light mb-4">Newsletter</h4>
@@ -341,13 +1194,10 @@
     <div class="container-fluid copyright bg-dark text-white-50 py-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; <a href="#">MUKOTECH NETWORKS</a>. All Rights Reserved.</p>
+                <div class="text-center">
+                    <p class="text-muted mb-0">&copy; 2025 Powered by  MUKOTECH NETWORKS. All rights reserved. | Privacy Policy | Terms of Service</p>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    <p class="mb-0">Designed by <a href="https://htmlcodex.com">MUKOTECH</a><br>Distributed by <a href="https://themewagon.com">MUKOTECH NETWORKS</a></p>
-                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -369,6 +1219,18 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-</body>
 
+    <script>
+        // Preloader removal script
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.body.classList.add("loaded");
+                setTimeout(function() {
+                    document.getElementById("preloader").style.display = "none";
+                }, 500); // Wait for fade-out transition to complete
+            }, 2000); // Adjust time as needed (2000ms = 2 seconds)
+        });
+    </script>
+</div> <!-- End of #content div -->
+</body>
 </html>

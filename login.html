@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MUKOTECH NETWORKS - Admin Portal</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary: #3a86ff;
+            --primary-dark: #2667cc;
+            --secondary: #8338ec;
+            --accent: #ff006e;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(58, 134, 255, 0.05) 0%, rgba(58, 134, 255, 0.05) 90%),
+                radial-gradient(circle at 90% 80%, rgba(131, 56, 236, 0.05) 0%, rgba(131, 56, 236, 0.05) 90%);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 440px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .login-logo img {
+            height: 70px;
+            transition: var(--transition);
+        }
+
+        .login-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .login-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .login-subtitle {
+            color: var(--gray);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            border-radius: var(--border-radius);
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--light-gray);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(58, 134, 255, 0.25);
+        }
+
+        .btn-login {
+            background-color: var(--primary);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .form-check-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .login-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .alert-danger {
+            border-radius: var(--border-radius);
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .input-group-text {
+            background-color: var(--light-gray);
+            border: 1px solid var(--light-gray);
+        }
+
+        .password-toggle {
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            z-index: 5;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        /* Animation for form */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-form {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .login-container {
+                padding: 2rem 1.5rem;
+                margin: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="login-container">
+        <div class="login-logo">
+            <img src="img/MUKOTECH NEW LOGO44.png" alt="MUKOTECH Logo">
+            <h3 class="login-title mt-3">Admin Portal</h3>
+            <p class="login-subtitle">Sign in to access the dashboard</p>
+        </div>
+
+        <form id="loginForm" class="login-form">
+            <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email Address</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                    <input type="email" class="form-control" id="loginEmail" placeholder="admin@mukotech.net" required autocomplete="username">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="loginPassword" class="form-label">Password</label>
+                <div class="password-container">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required autocomplete="current-password">
+                        <span class="password-toggle" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 d-flex justify-content-between align-items-center">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+                <div>
+                    <a href="#forgot-password" style="font-size: 0.85rem;">Forgot password?</a>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-login w-100 mb-3">
+                <i class="fas fa-sign-in-alt me-2"></i>Sign In
+            </button>
+
+            <div id="loginError" class="alert alert-danger mt-3 mb-0 d-none"></div>
+        </form>
+
+        <div class="login-footer">
+            <p>© 2023 MUKOTECH NETWORKS. All rights reserved.</p>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('loginPassword');
+
+        // Password visibility toggle
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+
+        // Check if user is already logged in (from localStorage)
+        const loggedInUser = localStorage.getItem('adminUser');
+        if (loggedInUser) {
+            // Redirect to dashboard if already logged in
+            window.location.href = 'dashboard.html';
+        }
+
+        // Login form submission
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            loginError.classList.add('d-none');
+
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            // Simple validation
+            if (!email || !password) {
+                loginError.textContent = 'Please fill in all fields';
+                loginError.classList.remove('d-none');
+                return;
+            }
+
+            // Validate credentials (in a real app, this would be a server-side check)
+            if (email === 'admin@mukotech.net' && password === 'admin123') {
+                // Simulate API call delay
+                const submitBtn = loginForm.querySelector('button[type="submit"]');
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Authenticating...';
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    const user = {
+                        email: email,
+                        name: 'Administrator',
+                        role: 'Super Admin',
+                        lastLogin: new Date().toISOString(),
+                        avatar: 'img/avatar-admin.png'
+                    };
+
+                    // Store user in localStorage if "Remember me" is checked
+                    if (rememberMe) {
+                        localStorage.setItem('adminUser', JSON.stringify(user));
+                    }
+
+                    // Store in session for immediate access
+                    sessionStorage.setItem('adminUser', JSON.stringify(user));
+
+                    // Redirect to dashboard
+                    window.location.href = 'dashboard.html';
+                }, 1000);
+            } else {
+                loginError.textContent = 'Invalid email or password. Please try again.';
+                loginError.classList.remove('d-none');
+
+                // Add shake animation to form
+                loginForm.classList.add('animate__animated', 'animate__headShake');
+                setTimeout(() => {
+                    loginForm.classList.remove('animate__animated', 'animate__headShake');
+                }, 1000);
+            }
+        });
+
+        // Add animation on focus for inputs
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.parentElement.style.transform = 'translateY(-2px)';
+            });
+
+            input.addEventListener('blur', function() {
+                this.parentElement.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+    });
+</script>
+</body>
+</html>

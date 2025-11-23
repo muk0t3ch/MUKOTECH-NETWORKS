@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>MUKOTECH NETWORKS - E-Commerce</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Red+Rose:wght@600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Product Card Styles */
+        .product-card {
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .product-img {
+            height: 200px;
+            object-fit: contain;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+
+        .stock-status {
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .in-stock {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .out-of-stock {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .low-stock {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .product-price {
+            font-weight: 600;
+            color: #FB8505;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .discount-badge {
+            background: #dc3545;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* Category Filter */
+        .category-filter .nav-link {
+            color: #333;
+            border-radius: 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .category-filter .nav-link.active {
+            color: #FB8505;
+            border-bottom: 2px solid #FB8505;
+            background: transparent;
+        }
+
+        /* Search Box */
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding-right: 40px;
+        }
+
+        .search-box .btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        /* Cart Preview */
+        .cart-preview {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #FB8505;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Product Detail Modal */
+        .product-gallery {
+            margin-bottom: 15px;
+        }
+
+        .product-thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .product-thumbnail.active {
+            border-color: #FB8505;
+        }
+
+        .specs-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Category Filter Styles */
+        .category-filter.active span:first-child {
+            color: #FB8505 !important;
+            font-weight: 600;
+        }
+
+        .category-filter:hover span:first-child {
+            color: #FB8505 !important;
+        }
+
+        .product-item {
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 767px) {
+            .product-img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="logo-container">
+        <div class="atom">
+            <div class="orbit orbit-1">
+                <div class="electron"></div>
+            </div>
+            <div class="orbit orbit-2">
+                <div class="electron"></div>
+            </div>
+            <div class="orbit orbit-3">
+                <div class="electron"></div>
+            </div>
+        </div>
+        <img src="img/MUKOTECH NEW LOGO44.png" alt="MUKOTECH NETWORKS Logo">
+        <div class="loading-text">Loading...</div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div id="content">
+    <!-- Topbar Start -->
+    <div class="container-fluid py-2 d-none d-lg-flex">
+        <div class="container">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <small class="me-3"><i class="fa fa-map-marker-alt me-2"></i>H70 Ndeke-Village, Copperbelt, Zambia</small>
+                    <small class="me-3"><i class="fa fa-clock me-2"></i>Mon-Sat 09am-5pm, Sun Closed</small>
+                </div>
+                <nav class="breadcrumb mb-0">
+                    <a class="breadcrumb-item small text-body" href="#">Track Order</a>
+                    <a class="breadcrumb-item small text-body" href="#">Support</a>
+                    <a class="breadcrumb-item small text-body" href="#">Terms</a>
+                    <a class="breadcrumb-item small text-body" href="#">FAQs</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Brand Start -->
+    <div class="container-fluid bg-primary text-white pt-4 pb-5 d-none d-lg-flex">
+        <div class="container pb-2">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex">
+                    <i class="bi bi-telephone-inbound fs-2"></i>
+                    <div class="ms-3">
+                        <h5 class="text-white mb-0">Call Now</h5>
+                        <span>+260967832706</span>
+                    </div>
+                </div>
+                <a href="index.html" class="h1 text-white mb-0">MUKOTECH<span class="text-dark">NETWORKS</span></a>
+                <div class="d-flex">
+                    <i class="bi bi-envelope fs-2"></i>
+                    <div class="ms-3">
+                        <h5 class="text-white mb-0">Mail Now</h5>
+                        <span>mukotech.networks@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Brand End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-lg-0 px-lg-3">
+                <a href="index.html" class="navbar-brand d-lg-none">
+                    <img src="img/MUKOTECH NEW LOGO44.png" alt="MUKOTECH Logo" style="height: 40px;">
+                </a>
+                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="index.html" class="nav-item nav-link">Home</a>
+                        <a href="service.html" class="nav-item nav-link">Services</a>
+                        <a href="appoinment.html" class="nav-item nav-link">Appointment</a>
+                        <a href="#" class="nav-item nav-link active">E-Commerce</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="policy.html" class="nav-item nav-link">Company Policy</a>
+                    </div>
+                    <div class="ms-auto d-none d-lg-flex">
+                        <div class="search-box me-3">
+                            <input type="text" class="form-control" placeholder="Search products...">
+                            <button class="btn btn-primary"><i class="bi bi-search"></i></button>
+                        </div>
+                        <a href="#" class="btn btn-primary me-2 position-relative cart-preview">
+                            <i class="bi bi-cart3"></i>
+                            <span class="cart-count">3</span>
+                        </a>
+                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5 mt-4">
+            <h1 class="display-2 text-white mb-3 animated slideInDown">Tech Store</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">All Products</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Products Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row">
+                <!-- Sidebar Filters -->
+                <div class="col-lg-3">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Categories</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <a href="#" class="text-dark d-flex justify-content-between align-items-center category-filter active" data-category="all">
+                                        <span>All Products</span>
+                                        <span class="badge bg-primary rounded-pill">9</span>
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="text-dark d-flex justify-content-between align-items-center category-filter" data-category="smartphones">
+                                        <span>Smartphones</span>
+                                        <span class="badge bg-primary rounded-pill">2</span>
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="text-dark d-flex justify-content-between align-items-center category-filter" data-category="laptops">
+                                        <span>Laptops</span>
+                                        <span class="badge bg-primary rounded-pill">3</span>
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="text-dark d-flex justify-content-between align-items-center category-filter" data-category="tablets">
+                                        <span>Tablets</span>
+                                        <span class="badge bg-primary rounded-pill">1</span>
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="text-dark d-flex justify-content-between align-items-center category-filter" data-category="accessories">
+                                        <span>Accessories</span>
+                                        <span class="badge bg-primary rounded-pill">1</span>
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="text-dark d-flex justify-content-between align-items-center category-filter" data-category="networking">
+                                        <span>Networking</span>
+                                        <span class="badge bg-primary rounded-pill">1</span>
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="text-dark d-flex justify-content-between align-items-center category-filter" data-category="security">
+                                        <span>Security Systems</span>
+                                        <span class="badge bg-primary rounded-pill">1</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Filter By Price</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="range-slider">
+                                <input type="range" class="form-range" min="0" step="100" id="priceRange">
+                                <div class="d-flex justify-content-between">
+                                    <span>K0</span>
+                                    <span id="maxPriceLabel"></span>
+                                </div>
+                                <div class="text-center mt-2">
+                                    <span class="fw-bold">Price: </span>
+                                    <span id="priceValue"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Brands</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="brandApple" checked>
+                                <label class="form-check-label" for="brandApple">Apple</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="brandSamsung" checked>
+                                <label class="form-check-label" for="brandSamsung">Samsung</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="brandHuawei" checked>
+                                <label class="form-check-label" for="brandHuawei">Huawei</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="brandHP" checked>
+                                <label class="form-check-label" for="brandHP">HP</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="brandDell" checked>
+                                <label class="form-check-label" for="brandDell">Dell</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="brandLenovo" checked>
+                                <label class="form-check-label" for="brandLenovo">Lenovo</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Stock Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="inStock" checked>
+                                <label class="form-check-label" for="inStock">In Stock</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="outOfStock">
+                                <label class="form-check-label" for="outOfStock">Out of Stock</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Listing -->
+                <div class="col-lg-9">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h4 class="mb-0">All Products</h4>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <div class="dropdown d-inline-block me-2">
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Sort by: Featured
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                                    <li><a class="dropdown-item" href="#">Featured</a></li>
+                                    <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
+                                    <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
+                                    <li><a class="dropdown-item" href="#">Newest Arrivals</a></li>
+                                    <li><a class="dropdown-item" href="#">Best Selling</a></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-outline-primary"><i class="bi bi-grid-fill"></i></button>
+                                <button type="button" class="btn btn-outline-primary"><i class="bi bi-list-ul"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <!-- Product 1 - Smartphone -->
+                        <div class="col-lg-4 col-md-6 product-item" data-category="smartphones" data-price="8499">
+                            <div class="product-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=667&q=80" class="img-fluid product-img w-100" alt="iPhone 13 Pro">
+                                    <div class="product-badge">
+                                        <span class="stock-status in-stock">In Stock (5+)</span>
+                                    </div>
+                                </div>
+                                <div class="p-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">Apple</span>
+                                        <div class="text-warning">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-half"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-2">iPhone 13 Pro 128GB</h5>
+                                    <div class="mb-2">
+                                        <span class="product-price">K8,499</span>
+                                        <span class="original-price ms-2">K9,299</span>
+                                        <span class="discount-badge ms-2">-9%</span>
+                                    </div>
+                                    <p class="mb-3">6.1" Super Retina XDR display, A15 Bionic chip, Triple 12MP camera system</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#productModal1">View Details</button>
+                                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 - Laptop -->
+                        <div class="col-lg-4 col-md-6 product-item" data-category="laptops" data-price="21999">
+                            <div class="product-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" class="img-fluid product-img w-100" alt="MacBook Pro">
+                                    <div class="product-badge">
+                                        <span class="stock-status in-stock">In Stock (3)</span>
+                                    </div>
+                                </div>
+                                <div class="p-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">Apple</span>
+                                        <div class="text-warning">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-2">MacBook Pro 14" M1 Pro</h5>
+                                    <div class="mb-2">
+                                        <span class="product-price">K21,999</span>
+                                        <span class="original-price ms-2">K23,499</span>
+                                        <span class="discount-badge ms-2">-6%</span>
+                                    </div>
+                                    <p class="mb-3">M1 Pro chip, 16GB RAM, 512GB SSD, Liquid Retina XDR display</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#productModal2">View Details</button>
+                                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 - Smartphone -->
+                        <div class="col-lg-4 col-md-6 product-item" data-category="smartphones" data-price="9799">
+                            <div class="product-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid product-img w-100" alt="Samsung Galaxy S22">
+                                    <div class="product-badge">
+                                        <span class="stock-status low-stock">Low Stock (2)</span>
+                                    </div>
+                                </div>
+                                <div class="p-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">Samsung</span>
+                                        <div class="text-warning">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-2">Samsung Galaxy S22 Ultra</h5>
+                                    <div class="mb-2">
+                                        <span class="product-price">K9,799</span>
+                                        <span class="original-price ms-2">K10,499</span>
+                                        <span class="discount-badge ms-2">-7%</span>
+                                    </div>
+                                    <p class="mb-3">6.8" Dynamic AMOLED 2X, 108MP camera, S Pen included, 5000mAh</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#productModal3">View Details</button>
+                                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 - Laptop -->
+                        <div class="col-lg-4 col-md-6 product-item" data-category="laptops" data-price="12499">
+                            <div class="product-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" class="img-fluid product-img w-100" alt="HP EliteBook">
+                                    <div class="product-badge">
+                                        <span class="stock-status in-stock">In Stock (7+)</span>
+                                    </div>
+                                </div>
+                                <div class="p-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">HP</span>
+                                        <div class="text-warning">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-2">HP EliteBook 840 G8</h5>
+                                    <div class="mb-2">
+                                        <span class="product-price">K12,499</span>
+                                        <span class="original-price ms-2">K13,299</span>
+                                        <span class="discount-badge ms-2">-6%</span>
+                                    </div>
+                                    <p class="mb-3">14" FHD, Intel Core i7-1165G7, 16GB RAM, 512GB SSD, Windows 11 Pro</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#productModal4">View Details</button>
+                                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 5 - Tablet -->
+                        <div class="col-lg-4 col-md-6 product-item" data-category="tablets" data-price="7299">
+                            <div class="product-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid product-img w-100" alt="Huawei MatePad">
+                                    <div class="product-badge">
+                                        <span class="stock-status in-stock">In Stock (4)</span>
+                                    </div>
+                                </div>
+                                <div class="p-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">Huawei</span>
+                                        <div class="text-warning">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-half"></i>
+                                            <i class="bi bi-star"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-2">Huawei MatePad Pro 12.6"</h5>
+                                    <div class="mb-2">
+                                        <span class="product-price">K7,299</span>
+                                        <span class="original-price ms-2">K7,999</span>
+                                        <span class="discount-badge ms-2">-9%</span>
+                                    </div>
+                                    <p class="mb-3">12.6" OLED, Kirin 9000E, 8GB RAM, 256GB, HarmonyOS 2.0</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#productModal5">View Details</button>
+                                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 6 - Networking -->
+                        <div class="col-lg-4 col-md-6 product-item" data-category="networking" data-price="1899">
+                            <div class="product-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1627875764053-aa2e0db1c7f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid product-img w-100" alt="TP-Link Router">
+                                    <div class="product-badge">
+                                        <span class="stock-status out-of-stock">Out of Stock</span>
+                                    </div>
+                                </div>
+                                <div class="p-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">TP-Link</span>
+                                        <div class="text-warning">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-half"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-2">TP-Link Archer AX6000</h5>
+                                    <div class="mb-2">
+                                        <span class="product-price">K1,899</span>
+                                    </div>
+                                    <p class="mb-3">WiFi 6 Router, Dual Band, 8 Gigabit LAN Ports, MU-MIMO, OFDMA</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#productModal6">View Details</button>
+                                        <button class="btn btn-sm btn-primary" disabled>Notify Me</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 7 - Laptop -->
+                        <div class="col-lg-4 col-md-6 product-item" data-category="laptops" data-price="18999">
+                            <div class="product-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid product-img w-100" alt="Dell XPS 15">
+                                    <div class="product-badge">
+                                        <span class="stock-status in-stock">In Stock (6+)</span>
+                                    </div>
+                                </div>
+                                <div class="p-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">Dell</span>
+                                        <div class="text-warning">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-2">Dell XPS 15 9510</h5>
+                                    <div class="mb-2">
+                                        <span class="product-price">K18,999</span>
+                                        <span class="original-price ms-2">K20,499</span>
+                                        <span class="discount-badge ms-2">-7%</span>
+                                    </div>
+                                    <p class="mb-3">15.6" 4K UHD+, Intel Core i7-11800H, 16GB RAM, 1TB SSD, RTX 3050 Ti</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#productModal7">View Details</button>
+                                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 8 - Accessory -->
+                        <div class="col-lg-4 col-md-6 product-item" data-category="accessories" data-price="2499">
+                            <div class="product-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1129&q=80" class="img-fluid product-img w-100" alt="Samsung Galaxy Watch">
+                                    <div class="product-badge">
+                                        <span class="stock-status in-stock">In Stock (8+)</span>
+                                    </div>
+                                </div>
+                                <div class="p-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">Samsung</span>
+                                        <div class="text-warning">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-half"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-2">Samsung Galaxy Watch 4</h5>
+                                    <div class="mb-2">
+                                        <span class="product-price">K2,499</span>
+                                        <span class="original-price ms-2">K2,799</span>
+                                        <span class="discount-badge ms-2">-11%</span>
+                                    </div>
+                                    <p class="mb-3">44mm, Bluetooth, Wear OS, ECG, BIA, Sleep Tracking</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#productModal8">View Details</button>
+                                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 9 - Security -->
+                        <div class="col-lg-4 col-md-6 product-item" data-category="security" data-price="4999">
+                            <div class="product-card">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid product-img w-100" alt="Hikvision CCTV">
+                                    <div class="product-badge">
+                                        <span class="stock-status in-stock">In Stock (10+)</span>
+                                    </div>
+                                </div>
+                                <div class="p-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">Hikvision</span>
+                                        <div class="text-warning">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-2">Hikvision 4K CCTV Kit</h5>
+                                    <div class="mb-2">
+                                        <span class="product-price">K4,999</span>
+                                        <span class="original-price ms-2">K5,499</span>
+                                        <span class="discount-badge ms-2">-9%</span>
+                                    </div>
+                                    <p class="mb-3">4x 4K Bullet Cameras, 8CH NVR, 2TB HDD, Night Vision, Weatherproof</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#productModal9">View Details</button>
+                                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Page navigation" class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Products End -->
+
+    <!-- Product Detail Modals -->
+    <!-- iPhone 13 Pro Modal -->
+    <div class="modal fade" id="productModal1" tabindex="-1" aria-labelledby="productModalLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel1">iPhone 13 Pro 128GB</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="product-gallery">
+                                <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=667&q=80" class="img-fluid rounded mb-3" alt="iPhone 13 Pro" id="mainImage1">
+                                <div class="d-flex">
+                                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=667&q=80" class="product-thumbnail active" onclick="changeImage(this, 'mainImage1')">
+                                    <img src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="product-thumbnail" onclick="changeImage(this, 'mainImage1')">
+                                    <img src="https://images.unsplash.com/photo-1631729370949-5a2b03a159f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="product-thumbnail" onclick="changeImage(this, 'mainImage1')">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-muted">Brand: Apple</span>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                    <span class="ms-2">(24 reviews)</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <span class="product-price fs-3">K8,499</span>
+                                <span class="original-price ms-2">K9,299</span>
+                                <span class="discount-badge ms-2">-9%</span>
+                            </div>
+
+                            <div class="mb-3">
+                                <span class="stock-status in-stock">In Stock (5+)</span>
+                                <span class="ms-3"><i class="bi bi-truck"></i> Free Delivery</span>
+                            </div>
+
+                            <div class="mb-4">
+                                <h6>Key Features:</h6>
+                                <ul class="specs-list">
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>6.1" Super Retina XDR display</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>A15 Bionic chip with 5-core GPU</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>Triple 12MP camera system (Telephoto, Wide, Ultra Wide)</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>Cinematic mode for recording videos</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>128GB storage capacity</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>Face ID for secure authentication</li>
+                                </ul>
+                            </div>
+
+                            <div class="row g-2 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Color</label>
+                                    <select class="form-select">
+                                        <option>Graphite</option>
+                                        <option>Gold</option>
+                                        <option>Silver</option>
+                                        <option>Sierra Blue</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Quantity</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button">-</button>
+                                        <input type="text" class="form-control text-center" value="1">
+                                        <button class="btn btn-outline-secondary" type="button">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex">
+                                <button class="btn btn-primary me-md-2"><i class="bi bi-cart3 me-2"></i>Add to Cart</button>
+                                <button class="btn btn-outline-primary"><i class="bi bi-heart me-2"></i>Add to Wishlist</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MacBook Pro Modal -->
+    <div class="modal fade" id="productModal2" tabindex="-1" aria-labelledby="productModalLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel2">MacBook Pro 14" M1 Pro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="product-gallery">
+                                <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" class="img-fluid rounded mb-3" alt="MacBook Pro" id="mainImage2">
+                                <div class="d-flex">
+                                    <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" class="product-thumbnail active" onclick="changeImage(this, 'mainImage2')">
+                                    <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" class="product-thumbnail" onclick="changeImage(this, 'mainImage2')">
+                                    <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" class="product-thumbnail" onclick="changeImage(this, 'mainImage2')">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-muted">Brand: Apple</span>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <span class="ms-2">(42 reviews)</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <span class="product-price fs-3">K21,999</span>
+                                <span class="original-price ms-2">K23,499</span>
+                                <span class="discount-badge ms-2">-6%</span>
+                            </div>
+
+                            <div class="mb-3">
+                                <span class="stock-status in-stock">In Stock (3)</span>
+                                <span class="ms-3"><i class="bi bi-truck"></i> Free Delivery</span>
+                            </div>
+
+                            <div class="mb-4">
+                                <h6>Key Features:</h6>
+                                <ul class="specs-list">
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>14.2-inch Liquid Retina XDR display</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>M1 Pro chip with 10-core CPU, 16-core GPU</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>16GB unified memory</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>512GB SSD storage</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>1080p FaceTime HD camera</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>Up to 17 hours battery life</li>
+                                </ul>
+                            </div>
+
+                            <div class="row g-2 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Color</label>
+                                    <select class="form-select">
+                                        <option>Space Gray</option>
+                                        <option>Silver</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Quantity</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button">-</button>
+                                        <input type="text" class="form-control text-center" value="1">
+                                        <button class="btn btn-outline-secondary" type="button">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex">
+                                <button class="btn btn-primary me-md-2"><i class="bi bi-cart3 me-2"></i>Add to Cart</button>
+                                <button class="btn btn-outline-primary"><i class="bi bi-heart me-2"></i>Add to Wishlist</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Samsung Galaxy S22 Ultra Modal -->
+    <div class="modal fade" id="productModal3" tabindex="-1" aria-labelledby="productModalLabel3" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel3">Samsung Galaxy S22 Ultra</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="product-gallery">
+                                <img src="https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="Samsung Galaxy S22 Ultra" id="mainImage3">
+                                <div class="d-flex">
+                                    <img src="https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="product-thumbnail active" onclick="changeImage(this, 'mainImage3')">
+                                    <img src="https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="product-thumbnail" onclick="changeImage(this, 'mainImage3')">
+                                    <img src="https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="product-thumbnail" onclick="changeImage(this, 'mainImage3')">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-muted">Brand: Samsung</span>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                    <span class="ms-2">(36 reviews)</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <span class="product-price fs-3">K9,799</span>
+                                <span class="original-price ms-2">K10,499</span>
+                                <span class="discount-badge ms-2">-7%</span>
+                            </div>
+
+                            <div class="mb-3">
+                                <span class="stock-status low-stock">Low Stock (2)</span>
+                                <span class="ms-3"><i class="bi bi-truck"></i> Free Delivery</span>
+                            </div>
+
+                            <div class="mb-4">
+                                <h6>Key Features:</h6>
+                                <ul class="specs-list">
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>6.8-inch Dynamic AMOLED 2X display</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>108MP wide + 12MP ultra wide + 10MP telephoto cameras</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>S Pen included with Bluetooth features</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>5000mAh battery with 45W fast charging</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>256GB storage, 12GB RAM</li>
+                                    <li><i class="bi bi-check-circle text-primary me-2"></i>Android 12 with One UI 4.1</li>
+                                </ul>
+                            </div>
+
+                            <div class="row g-2 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Color</label>
+                                    <select class="form-select">
+                                        <option>Phantom Black</option>
+                                        <option>Burgundy</option>
+                                        <option>Green</option>
+                                        <option>White</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Quantity</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary" type="button">-</button>
+                                        <input type="text" class="form-control text-center" value="1">
+                                        <button class="btn btn-outline-secondary" type="button">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex">
+                                <button class="btn btn-primary me-md-2"><i class="bi bi-cart3 me-2"></i>Add to Cart</button>
+                                <button class="btn btn-outline-primary"><i class="bi bi-heart me-2"></i>Add to Wishlist</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add similar modals for other products (productModal4 to productModal9) -->
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="cartOffcanvasLabel">Your Shopping Cart</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="cart-items">
+                <!-- Cart Item 1 -->
+                <div class="d-flex py-3 border-bottom">
+                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=667&q=80" class="rounded" width="60" height="60" alt="iPhone 13 Pro">
+                    <div class="ps-3">
+                        <h6 class="mb-1">iPhone 13 Pro 128GB</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted">K8,499 x 1</span>
+                            <span class="fw-bold">K8,499</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Item 2 -->
+                <div class="d-flex py-3 border-bottom">
+                    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="rounded" width="60" height="60" alt="Hikvision CCTV">
+                    <div class="ps-3">
+                        <h6 class="mb-1">Hikvision 4K CCTV Kit</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted">K4,999 x 1</span>
+                            <span class="fw-bold">K4,999</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Item 3 -->
+                <div class="d-flex py-3 border-bottom">
+                    <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1129&q=80" class="rounded" width="60" height="60" alt="Samsung Galaxy Watch">
+                    <div class="ps-3">
+                        <h6 class="mb-1">Samsung Galaxy Watch 4</h6>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted">K2,499 x 1</span>
+                            <span class="fw-bold">K2,499</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-summary mt-4">
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Subtotal:</span>
+                    <span>K15,997</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Shipping:</span>
+                    <span>Free</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Tax:</span>
+                    <span>K1,920</span>
+                </div>
+                <div class="d-flex justify-content-between fw-bold fs-5">
+                    <span>Total:</span>
+                    <span>K17,917</span>
+                </div>
+
+                <div class="d-grid gap-2 mt-4">
+                    <button class="btn btn-primary">Proceed to Checkout</button>
+                    <button class="btn btn-outline-primary">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+    <div class="container-fluid footer position-relative bg-dark text-white-50 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5 py-5">
+                <div class="col-lg-6 pe-lg-5">
+                    <a href="index.html" class="navbar-brand">
+                        <h1 class="h1 text-primary mb-0">MUKOTECH<span class="text-white">NETWORKS</span></h1>
+                    </a>
+                    <p class="fs-5 mb-4">Empowering Innovation through Technology One Byte at a Time.
+                        <br>(Modern and tech-forward; implies full-service delivery.)</p>
+                    <p><i class="fa fa-map-marker-alt me-2"></i>H70 Ndeke-Village, Copperbelt, Zambia</p>
+                    <p><i class="fa fa-phone-alt me-2"></i>+260967832706</p>
+                    <p><i class="fa fa-envelope me-2"></i>mukotech.networks@gmail.com</p>
+                    <div class="d-flex mt-4">
+                        <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-lg-square btn-primary me-2" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <div class="row g-5">
+                        <div class="col-sm-6">
+                            <h4 class="text-light mb-4">Quick Links</h4>
+                            <a class="btn btn-link" href="index.html">Home</a>
+                            <a class="btn btn-link" href="service.html">Services</a>
+                            <a class="btn btn-link" href="about.html">About Us</a>
+                            <a class="btn btn-link" href="contact.html">Contact</a>
+                            <a class="btn btn-link" href="#">Support</a>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4 class="text-light mb-4">Our Services</h4>
+                            <a class="btn btn-link" href="#">Networking</a>
+                            <a class="btn btn-link" href="#">CCTV Installation</a>
+                            <a class="btn btn-link" href="#">E-Commerce</a>
+                            <a class="btn btn-link" href="#">Web Development</a>
+                            <a class="btn btn-link" href="#">IT Support</a>
+                        </div>
+                        <div class="col-sm-12">
+                            <h4 class="text-light mb-4">Newsletter</h4>
+                            <div class="w-100">
+                                <div class="input-group">
+                                    <input type="text" class="form-control border-0 py-3 px-4" style="background: rgba(255, 255, 255, .1);" placeholder="Your Email Address"><button class="btn btn-primary px-4">Sign Up</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright bg-dark text-white-50 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <p class="text-muted mb-0">&copy; 2025 Powered by  MUKOTECH NETWORKS. All rights reserved. | Privacy Policy | Terms of Service</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+        // Preloader removal script
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.body.classList.add("loaded");
+                setTimeout(function() {
+                    document.getElementById("preloader").style.display = "none";
+                }, 500);
+            }, 2000);
+        });
+
+        // Change product image when thumbnail is clicked
+        function changeImage(thumbnail, mainImageId) {
+            // Remove active class from all thumbnails
+            const thumbnails = thumbnail.parentElement.querySelectorAll('.product-thumbnail');
+            thumbnails.forEach(t => t.classList.remove('active'));
+
+            // Add active class to clicked thumbnail
+            thumbnail.classList.add('active');
+
+            // Change main image
+            const mainImage = document.getElementById(mainImageId);
+            mainImage.src = thumbnail.src;
+        }
+
+        // Initialize cart offcanvas
+        const cartPreview = document.querySelector('.cart-preview');
+        cartPreview.addEventListener('click', function() {
+            const cartOffcanvas = new bootstrap.Offcanvas(document.getElementById('cartOffcanvas'));
+            cartOffcanvas.show();
+        });
+
+        // Update cart count (example)
+        function updateCartCount(count) {
+            document.querySelector('.cart-count').textContent = count;
+        }
+
+        // Example: Add to cart functionality
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            if (button.textContent.includes('Add to Cart')) {
+                button.addEventListener('click', function() {
+                    // In a real app, you would add the product to the cart
+                    const currentCount = parseInt(document.querySelector('.cart-count').textContent);
+                    updateCartCount(currentCount + 1);
+
+                    // Show success message
+                    alert('Product added to cart!');
+                });
+            }
+        });
+
+        // Initialize price range slider based on product prices
+        function initializePriceRange() {
+            const products = document.querySelectorAll('.product-item');
+            let maxProductPrice = 0;
+
+            products.forEach(product => {
+                const price = parseInt(product.getAttribute('data-price'));
+                if (price > maxProductPrice) {
+                    maxProductPrice = price;
+                }
+            });
+
+            // Set the max value to the highest product price, rounded up to nearest 1000
+            const roundedMax = Math.ceil(maxProductPrice / 1000) * 1000;
+            const priceRange = document.getElementById('priceRange');
+            priceRange.max = roundedMax;
+            priceRange.value = roundedMax;
+
+            // Update the display
+            document.getElementById('priceValue').textContent = 'Up to K' + roundedMax.toLocaleString();
+            document.getElementById('maxPriceLabel').textContent = 'K' + roundedMax.toLocaleString();
+        }
+
+        // Filter products by category and price
+        function filterProducts() {
+            const activeCategory = document.querySelector('.category-filter.active').getAttribute('data-category');
+            const maxPrice = parseInt(document.getElementById('priceRange').value);
+            const products = document.querySelectorAll('.product-item');
+            let visibleCount = 0;
+
+            products.forEach(product => {
+                const productCategory = product.getAttribute('data-category');
+                const productPrice = parseInt(product.getAttribute('data-price'));
+
+                const categoryMatch = activeCategory === 'all' || productCategory === activeCategory;
+                const priceMatch = productPrice <= maxPrice;
+
+                if (categoryMatch && priceMatch) {
+                    product.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+
+            // Update the product counts in each category
+            updateCategoryCounts(maxPrice);
+
+            // Update the heading
+            updateCategoryHeading(activeCategory);
+        }
+
+        // Update product counts in each category based on current price filter
+        function updateCategoryCounts(maxPrice) {
+            const categories = ['all', 'smartphones', 'laptops', 'tablets', 'accessories', 'networking', 'security'];
+
+            categories.forEach(category => {
+                const filterElement = document.querySelector(`.category-filter[data-category="${category}"]`);
+                if (filterElement) {
+                    let count = 0;
+                    const products = document.querySelectorAll('.product-item');
+
+                    products.forEach(product => {
+                        const productCategory = product.getAttribute('data-category');
+                        const productPrice = parseInt(product.getAttribute('data-price'));
+
+                        const categoryMatch = category === 'all' || productCategory === category;
+                        const priceMatch = productPrice <= maxPrice;
+
+                        if (categoryMatch && priceMatch) {
+                            count++;
+                        }
+                    });
+
+                    const badge = filterElement.querySelector('.badge');
+                    if (badge) {
+                        badge.textContent = count;
+                    }
+                }
+            });
+        }
+
+        // Update the category heading
+        function updateCategoryHeading(activeCategory) {
+            const categoryHeading = document.querySelector('.col-md-6 h4');
+            if (activeCategory === 'all') {
+                categoryHeading.textContent = 'All Products';
+            } else {
+                const categoryName = document.querySelector(`.category-filter[data-category="${activeCategory}"] span:first-child`).textContent;
+                categoryHeading.textContent = categoryName;
+            }
+        }
+
+        // Initialize everything when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize price range slider
+            initializePriceRange();
+
+            // Set up price range slider event listener
+            document.getElementById('priceRange').addEventListener('input', function() {
+                const maxPrice = parseInt(this.value);
+                document.getElementById('priceValue').textContent = 'Up to K' + maxPrice.toLocaleString();
+                filterProducts();
+            });
+
+            // Set up category filters
+            const categoryFilters = document.querySelectorAll('.category-filter');
+            categoryFilters.forEach(filter => {
+                filter.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Remove active class from all filters
+                    categoryFilters.forEach(f => {
+                        f.classList.remove('active');
+                        f.querySelector('span:first-child').classList.remove('text-primary');
+                        f.querySelector('span:first-child').classList.add('text-dark');
+                    });
+
+                    // Add active class to clicked filter
+                    this.classList.add('active');
+                    this.querySelector('span:first-child').classList.remove('text-dark');
+                    this.querySelector('span:first-child').classList.add('text-primary');
+
+                    filterProducts();
+                });
+            });
+
+            // Initialize by showing all products
+            filterProducts();
+        });
+    </script>
+</div> <!-- End of #content div -->
+</body>
+</html>
