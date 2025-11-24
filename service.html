@@ -32,7 +32,36 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-        /* Preloader Styles */
+        :root {
+            --primary: #FB8505;
+            --primary-dark: #E67A00;
+            --secondary: #1A2A57;
+            --dark: #0F1A3A;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== PRELOADER STYLES ===== */
         #preloader {
             position: fixed;
             top: 0;
@@ -47,7 +76,6 @@
             transition: opacity 0.5s ease;
         }
 
-        /* Logo Animation Container */
         .logo-container {
             position: relative;
             width: 220px;
@@ -57,7 +85,6 @@
             align-items: center;
         }
 
-        /* Main Logo */
         .logo-container img {
             width: 140px;
             height: auto;
@@ -72,7 +99,6 @@
             100% { transform: scale(1); opacity: 0.9; }
         }
 
-        /* Atom Animation */
         .atom {
             position: absolute;
             width: 100%;
@@ -81,7 +107,6 @@
             left: 0;
         }
 
-        /* Electron Orbit Paths */
         .orbit {
             position: absolute;
             border: 1.5px solid;
@@ -90,7 +115,6 @@
             transform-origin: center;
         }
 
-        /* First Orbit (Orange) */
         .orbit-1 {
             width: 200px;
             height: 200px;
@@ -100,7 +124,6 @@
             animation-duration: 18s;
         }
 
-        /* Second Orbit (Dark) */
         .orbit-2 {
             width: 160px;
             height: 160px;
@@ -111,7 +134,6 @@
             animation-duration: 14s;
         }
 
-        /* Third Orbit (Orange) */
         .orbit-3 {
             width: 120px;
             height: 120px;
@@ -121,36 +143,34 @@
             animation-duration: 10s;
         }
 
-        /* Electrons */
         .electron {
             position: absolute;
             width: 8px;
             height: 8px;
-            background-color: #FB8505;
+            background-color: var(--primary);
             border-radius: 50%;
             top: -4px;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 6px #FB8505;
+            box-shadow: 0 0 6px var(--primary);
         }
 
         .orbit-2 .electron {
-            background-color: #333;
-            box-shadow: 0 0 6px #333;
+            background-color: var(--secondary);
+            box-shadow: 0 0 6px var(--secondary);
             width: 6px;
             height: 6px;
             top: -3px;
         }
 
         .orbit-3 .electron {
-            background-color: #FB8505;
-            box-shadow: 0 0 8px #FB8505;
+            background-color: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
             width: 10px;
             height: 10px;
             top: -5px;
         }
 
-        /* Connecting Lines */
         .atom::before {
             content: '';
             position: absolute;
@@ -173,24 +193,18 @@
             z-index: 1;
         }
 
-        /* Rotation Animation */
         @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        /* Loading Text */
         .loading-text {
             position: absolute;
             bottom: -40px;
             width: 100%;
             text-align: center;
-            font-family: 'Roboto', sans-serif;
-            color: #FB8505;
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary);
             font-size: 16px;
             font-weight: 500;
             animation: fadeInOut 2s infinite;
@@ -201,19 +215,454 @@
             50% { opacity: 1; }
         }
 
-        /* Hide preloader when loaded */
         .loaded #preloader {
             opacity: 0;
             pointer-events: none;
         }
 
-        /* Custom Styles */
-        .text-primary {
-            color: #FB8505 !important;
+        .fade-out {
+            opacity: 0;
+            pointer-events: none;
         }
-        .nav-item .nav-link.active {
-            color: #FB8505 !important;
-            font-weight: bold;
+
+        /* ===== ENHANCED HEADER STYLES ===== */
+        .main-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjEwMDAiIGZpbGw9IiMxQTJBNTciPjwvcmVjdD48cGF0aCBkPSJNMCw1MDBMMTAwMCw1MDBMMTAwMCw3NTBMMCw3NTBaIiBmaWxsPSIjMGYxYTNhIiBvcGFjaXR5PSIwLjMiPjwvcGF0aD48L3N2Zz4=');
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .header-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .brand-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            min-width: 300px;
+            transition: all 0.3s ease;
+        }
+
+        .brand-logo img {
+            height: 60px;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .brand-text {
+            color: var(--white);
+        }
+
+        .brand-text h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+            transition: all 0.3s ease;
+        }
+
+        .brand-text .highlight {
+            color: var(--primary);
+        }
+
+        .brand-tagline {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .header-contact {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-icon i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .contact-details h5 {
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+            font-weight: 500;
+        }
+
+        .contact-details span {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* ===== ENHANCED NAVBAR STYLES ===== */
+        .main-navbar {
+            background: var(--white);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        .nav-item {
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav-link {
+            color: var(--dark) !important;
+            font-weight: 500;
+            padding: 15px 20px !important;
+            transition: all 0.3s;
+            position: relative;
+            text-decoration: none;
+            display: block;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 220px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown-item:hover {
+            background: var(--light);
+            color: var(--primary);
+            padding-left: 25px;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .nav-item.dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Search Bar Styles */
+        .search-container {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .search-toggle {
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-toggle:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        .search-box {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 300px;
+            background: var(--white);
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .search-box.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .search-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-toggle:hover {
+            background: var(--light);
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 992px) {
+            .brand-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .header-contact {
+                justify-content: center;
+            }
+
+            .navbar-container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+
+            .navbar-nav {
+                margin-bottom: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-contact {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .brand-logo {
+                min-width: auto;
+                justify-content: center;
+            }
+
+            .brand-text h1 {
+                font-size: 1.8rem;
+            }
+
+            /* Mobile Navigation */
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .navbar-nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: var(--white);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            .navbar-nav.active {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .social-links {
+                margin-top: 15px;
+                justify-content: center;
+                margin-left: 0;
+            }
+
+            .search-container {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+
+            .search-box {
+                position: static;
+                width: 100%;
+                margin-top: 10px;
+                box-shadow: none;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer {
+                padding: 40px 0 0;
+            }
         }
     </style>
 </head>
@@ -243,12 +692,11 @@
 <!-- Main Content -->
 <div id="content">
     <!-- Spinner Start -->
-<!--    <div id="spinner"-->
-<!--         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">-->
-<!--        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>-->
-<!--    </div>-->
+    <!--    <div id="spinner"-->
+    <!--         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">-->
+    <!--        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>-->
+    <!--    </div>-->
     <!-- Spinner End -->
-
 
     <!-- Topbar Start -->
     <div class="container-fluid py-2 d-none d-lg-flex">
@@ -269,81 +717,106 @@
     </div>
     <!-- Topbar End -->
 
-
-    <!-- Brand Start -->
-    <div class="container-fluid bg-primary text-white pt-4 pb-5 d-none d-lg-flex">
-        <div class="container pb-2">
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="d-flex">
-<!--                    <i class="bi bi-telephone-inbound fs-2"></i>-->
-<!--                    <div class="ms-3">-->
-<!--                        <h5 class="text-white mb-0">Call Now</h5>-->
-<!--                        <span>+260967832706</span>-->
-<!--                    </div>-->
+    <!-- Enhanced Header Start -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand-section">
+                <div class="brand-logo">
+                    <img src="https://via.placeholder.com/60x60/1A2A57/FFFFFF?text=MK" alt="MUKOTECH Logo">
+                    <div class="brand-text">
+                        <h1>MUKOTECH<span class="highlight">NETWORKS</span></h1>
+                        <p class="brand-tagline">Empowering Innovation, One Byte at a Time</p>
+                    </div>
                 </div>
-                <a href="index.html" class="h1 text-white mb-0">MUKOTECH<span class="text-dark">NETWORKS</span></a>
-                <div class="d-flex">
-<!--                    <i class="bi bi-envelope fs-2"></i>-->
-<!--                    <div class="ms-3">-->
-<!--                        <h5 class="text-white mb-0">Mail Now</h5>-->
-<!--                        <span>mukotech.networks@gmail.com</span>-->
-<!--                    </div>-->
+                <div class="header-contact">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h5>Call Now</h5>
+                            <span>+260967832706</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h5>Mail Now</h5>
+                            <span>mukotech.networks@gmail.com</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Brand End -->
+    </header>
+    <!-- Enhanced Header End -->
 
-
-    <!-- Navbar Start -->
-    <div class="container-fluid sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-white py-lg-0 px-lg-3">
-                <a href="index.html" class="navbar-brand d-lg-none">
-                    <img src="img/MUKOTECH NEW LOGO44.png" alt="MUKOTECH Logo" style="height: 40px;">
-                </a>
-                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
-                        data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="service.html" class="nav-item nav-link active">IT Services</a>
-                        <a href="appoinment.html" class="nav-item nav-link">Appointment</a>
-                        <a href="e_commerce.html" class="nav-item nav-link">E-Commerce</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="policy.html" class="nav-item nav-link">Company Policy</a>
-                    </div>
-                    <div class="ms-auto d-none d-lg-flex">
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-youtube"></i></a>
+    <!-- Enhanced Navbar Start -->
+    <nav class="main-navbar">
+        <div class="navbar-container">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="navbar-nav" id="navbarNav">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="service.html" class="nav-link">IT Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Network Solutions</a>
+                        <a href="#" class="dropdown-item">Cybersecurity</a>
+                        <a href="#" class="dropdown-item">Cloud Services</a>
+                        <a href="#" class="dropdown-item">IT Consulting</a>
+                        <a href="#" class="dropdown-item">Hardware Support</a>
                     </div>
                 </div>
-            </nav>
+                <div class="nav-item">
+                    <a href="appoinment.html" class="nav-link">Appointment</a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="online-store-setup.html" class="nav-link">E-Commerce <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Online Store Setup</a>
+                        <a href="#" class="dropdown-item">Payment Integration</a>
+                        <a href="#" class="dropdown-item">Inventory Management</a>
+                        <a href="#" class="dropdown-item">Digital Marketing</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </div>
+                <div class="nav-item">
+                    <a href="policy.html" class="nav-link">Company Policy</a>
+                </div>
+            </div>
+            <div class="search-container">
+                <button class="search-toggle" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div class="search-box" id="searchBox">
+                    <form class="search-form">
+                        <input type="text" class="search-input" placeholder="Search services...">
+                        <button type="submit" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
-    </div>
-    <!-- Navbar End -->
-
-
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container text-center py-5 mt-4">
-            <h1 class="display-2 text-white mb-3 animated slideInDown">Services</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item" aria-current="page">Services</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- Page Header End -->
-
+    </nav>
+    <!-- Enhanced Navbar End -->
 
     <!-- Service Start -->
     <div class="container-fluid container-service py-5">
@@ -469,673 +942,6 @@
     </div>
     <!-- Service End -->
 
-    <!-- Service Modals -->
-    <!-- Network Infrastructure Modal -->
-    <div class="modal fade" id="serviceModal1" tabindex="-1" aria-labelledby="serviceModalLabel1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="serviceModalLabel1"><i class="bi bi-router-fill me-2"></i>Network Infrastructure Solutions</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" class="img-fluid rounded mb-3" alt="Network Infrastructure">
-                            <div class="p-3 bg-light rounded">
-                                <h6><i class="bi bi-check-circle-fill text-primary me-2"></i>Key Benefits</h6>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-check text-success me-2"></i>99.9% network uptime guarantee</li>
-                                    <li><i class="bi bi-check text-success me-2"></i>Military-grade encryption</li>
-                                    <li><i class="bi bi-check text-success me-2"></i>24/7 monitoring and support</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="text-primary">Complete Network Solutions</h4>
-                            <p>We design and implement robust network infrastructures tailored to your business needs:</p>
-                            <div class="mb-4">
-                                <h6><i class="bi bi-wifi text-primary me-2"></i>Wireless Solutions</h6>
-                                <ul>
-                                    <li>Enterprise WiFi 6 deployments</li>
-                                    <li>Mesh network configurations</li>
-                                    <li>Outdoor wireless coverage</li>
-                                </ul>
-
-                                <h6><i class="bi bi-hdd-stack text-primary me-2"></i>Structured Cabling</h6>
-                                <ul>
-                                    <li>Cat6A and fiber optic installations</li>
-                                    <li>Data center cabling</li>
-                                    <li>Cable management solutions</li>
-                                </ul>
-                            </div>
-                            <div class="alert alert-primary">
-                                <i class="bi bi-info-circle-fill me-2"></i> All implementations include detailed documentation and training.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Request Network Assessment</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Security Solutions Modal -->
-    <div class="modal fade" id="serviceModal2" tabindex="-1" aria-labelledby="serviceModalLabel2" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title" id="serviceModalLabel2"><i class="bi bi-shield-lock me-2"></i>Security Solutions</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="Security Solutions">
-                            <div class="card border-dark">
-                                <div class="card-header bg-dark text-white">
-                                    <i class="bi bi-shield-check me-2"></i>Security Packages
-                                </div>
-                                <div class="card-body">
-                                    <h6>Essential Protection</h6>
-                                    <ul>
-                                        <li>24/7 Network Monitoring</li>
-                                        <li>Firewall Management</li>
-                                        <li>Vulnerability Scanning</li>
-                                    </ul>
-                                    <hr>
-                                    <h6>Enterprise Security</h6>
-                                    <ul>
-                                        <li>Advanced Threat Protection</li>
-                                        <li>SIEM Implementation</li>
-                                        <li>Security Awareness Training</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="text-dark">Integrated Security Systems</h4>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <div class="p-3 border rounded h-100">
-                                        <h6><i class="bi bi-camera-video-fill text-dark me-2"></i>Physical Security</h6>
-                                        <ul>
-                                            <li>4K CCTV Systems</li>
-                                            <li>Access Control Systems</li>
-                                            <li>Biometric Authentication</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <div class="p-3 border rounded h-100">
-                                        <h6><i class="bi bi-lock-fill text-dark me-2"></i>Cybersecurity</h6>
-                                        <ul>
-                                            <li>Endpoint Protection</li>
-                                            <li>Email Security</li>
-                                            <li>Network Segmentation</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="alert alert-dark">
-                                <i class="bi bi-exclamation-triangle-fill me-2"></i> Our solutions comply with ISO 27001, GDPR, and HIPAA standards.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-dark">Request Security Audit</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile Applications Modal -->
-    <div class="modal fade" id="serviceModal3" tabindex="-1" aria-labelledby="serviceModalLabel3" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-info text-white">
-                    <h5 class="modal-title" id="serviceModalLabel3"><i class="bi bi-phone me-2"></i>Mobile Application Development</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="Mobile Applications">
-                            <div class="p-3 bg-light rounded">
-                                <h6><i class="bi bi-check-circle-fill text-info me-2"></i>Development Options</h6>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-phone text-info me-2"></i>Native iOS (Swift)</li>
-                                    <li><i class="bi bi-phone text-info me-2"></i>Native Android (Kotlin)</li>
-                                    <li><i class="bi bi-phone text-info me-2"></i>Cross-platform (Flutter/React Native)</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="text-info">Custom Mobile Solutions</h4>
-                            <p>We build high-performance mobile applications for all business needs:</p>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-brush text-info me-2"></i>UI/UX Design</h6>
-                                <ul>
-                                    <li>User-centered design</li>
-                                    <li>Prototyping</li>
-                                    <li>Usability testing</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-gear text-info me-2"></i>Development Services</h6>
-                                <ul>
-                                    <li>Custom app development</li>
-                                    <li>API integration</li>
-                                    <li>Cloud backend</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-graph-up text-info me-2"></i>App Marketing</h6>
-                                <ul>
-                                    <li>App Store optimization</li>
-                                    <li>Launch strategy</li>
-                                    <li>User acquisition</li>
-                                </ul>
-                            </div>
-
-                            <div class="alert alert-info">
-                                <i class="bi bi-google-play me-2"></i> We've published 50+ apps with over 1M combined downloads.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-info">Discuss Your App Idea</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Graphics Design Modal -->
-    <div class="modal fade" id="serviceModal4" tabindex="-1" aria-labelledby="serviceModalLabel4" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-warning text-dark">
-                    <h5 class="modal-title" id="serviceModalLabel4"><i class="bi bi-palette me-2"></i>Graphics Design Services</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="Graphics Design">
-                            <div class="card border-warning">
-                                <div class="card-header bg-warning text-dark">
-                                    <i class="bi bi-collection me-2"></i>Design Portfolio
-                                </div>
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between">
-                                        <span>Logos</span>
-                                        <span>45+</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <span>Brand Guides</span>
-                                        <span>30+</span>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <span>Web Designs</span>
-                                        <span>60+</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="text-warning">Creative Design Solutions</h4>
-                            <p>Professional design services to elevate your brand identity:</p>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-brush text-warning me-2"></i>Branding</h6>
-                                <ul>
-                                    <li>Logo design</li>
-                                    <li>Brand guidelines</li>
-                                    <li>Business cards</li>
-                                    <li>Stationery</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-newspaper text-warning me-2"></i>Print Design</h6>
-                                <ul>
-                                    <li>Brochures</li>
-                                    <li>Flyers</li>
-                                    <li>Posters</li>
-                                    <li>Packaging</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-layout-text-window text-warning me-2"></i>Digital Design</h6>
-                                <ul>
-                                    <li>Social media graphics</li>
-                                    <li>Web banners</li>
-                                    <li>Email templates</li>
-                                    <li>UI/UX design</li>
-                                </ul>
-                            </div>
-
-                            <div class="alert alert-warning">
-                                <i class="bi bi-award me-2"></i> Our designs have won 5 international design awards.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-warning">Request Design Quote</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CCTV Installation Modal -->
-    <div class="modal fade" id="serviceModal5" tabindex="-1" aria-labelledby="serviceModalLabel5" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title" id="serviceModalLabel5"><i class="bi bi-camera-video me-2"></i>CCTV Installation Services</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" class="img-fluid rounded mb-3" alt="CCTV Installation">
-                            <div class="p-3 bg-light rounded">
-                                <h6><i class="bi bi-check-circle-fill text-danger me-2"></i>System Features</h6>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-check text-danger me-2"></i>4K Ultra HD Resolution</li>
-                                    <li><i class="bi bi-check text-danger me-2"></i>Night Vision Capability</li>
-                                    <li><i class="bi bi-check text-danger me-2"></i>Weatherproof Housing</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="text-danger">Professional Surveillance Solutions</h4>
-                            <p>Complete CCTV installation and monitoring services:</p>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-camera text-danger me-2"></i>Camera Systems</h6>
-                                <ul>
-                                    <li>Dome cameras</li>
-                                    <li>Bullet cameras</li>
-                                    <li>PTZ cameras</li>
-                                    <li>Hidden cameras</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-hdd-stack text-danger me-2"></i>Recording Solutions</h6>
-                                <ul>
-                                    <li>NVR systems</li>
-                                    <li>Cloud storage</li>
-                                    <li>Motion-activated recording</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-phone text-danger me-2"></i>Remote Monitoring</h6>
-                                <ul>
-                                    <li>Mobile app access</li>
-                                    <li>Real-time alerts</li>
-                                    <li>Multi-user access</li>
-                                </ul>
-                            </div>
-
-                            <div class="alert alert-danger">
-                                <i class="bi bi-shield-check me-2"></i> Our installations have helped reduce security incidents by 80% for clients.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Get Free Site Survey</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- API Development Modal -->
-    <div class="modal fade" id="serviceModal6" tabindex="-1" aria-labelledby="serviceModalLabel6" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title" id="serviceModalLabel6"><i class="bi bi-plug me-2"></i>API Development Services</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="API Development">
-                            <div class="card border-success">
-                                <div class="card-header bg-success text-white">
-                                    <i class="bi bi-terminal me-2"></i>API Technologies
-                                </div>
-                                <div class="card-body">
-                                    <ul class="list-unstyled">
-                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>REST APIs</li>
-                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>GraphQL</li>
-                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>WebSockets</li>
-                                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>gRPC</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="text-success">Powerful API Solutions</h4>
-                            <p>Custom API development and integration services:</p>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-code-square text-success me-2"></i>API Development</h6>
-                                <ul>
-                                    <li>Custom API design</li>
-                                    <li>Microservices architecture</li>
-                                    <li>Third-party API integration</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-shield-check text-success me-2"></i>API Security</h6>
-                                <ul>
-                                    <li>OAuth 2.0 implementation</li>
-                                    <li>Rate limiting</li>
-                                    <li>Data encryption</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-book text-success me-2"></i>API Documentation</h6>
-                                <ul>
-                                    <li>Swagger/OpenAPI</li>
-                                    <li>Interactive docs</li>
-                                    <li>Code samples</li>
-                                </ul>
-                            </div>
-
-                            <div class="alert alert-success">
-                                <i class="bi bi-lightning-charge me-2"></i> Our APIs handle over 10M requests daily for clients.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success">Discuss API Needs</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- E-Commerce Modal -->
-    <div class="modal fade" id="serviceModal3" tabindex="-1" aria-labelledby="serviceModalLabel3" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="serviceModalLabel3">E-Commerce Solutions</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="img/ecommerce.jpg" class="img-fluid rounded mb-3" alt="E-Commerce Solutions">
-                        </div>
-                        <div class="col-md-6">
-                            <h4>Complete E-Commerce Solutions</h4>
-                            <p>Our e-commerce services include:</p>
-                            <ul>
-                                <li>Online store setup and configuration</li>
-                                <li>Payment gateway integration</li>
-                                <li>Product catalog management</li>
-                                <li>Inventory management systems</li>
-                                <li>Mobile commerce solutions</li>
-                            </ul>
-                            <p>We help businesses establish and grow their online presence with powerful e-commerce solutions.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Learn More</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Microsoft Office Modal -->
-    <div class="modal fade" id="serviceModal7" tabindex="-1" aria-labelledby="serviceModalLabel7" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="serviceModalLabel7"><i class="bi bi-file-earmark-word me-2"></i>Microsoft Office Solutions</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="Microsoft Office">
-                            <div class="p-3 bg-light rounded">
-                                <h6><i class="bi bi-check-circle-fill text-primary me-2"></i>Office Products</h6>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-file-word text-primary me-2"></i>Word</li>
-                                    <li><i class="bi bi-file-excel text-primary me-2"></i>Excel</li>
-                                    <li><i class="bi bi-file-ppt text-primary me-2"></i>PowerPoint</li>
-                                    <li><i class="bi bi-envelope text-primary me-2"></i>Outlook</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="text-primary">Microsoft Office Services</h4>
-                            <p>Complete Microsoft Office solutions for businesses:</p>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-download text-primary me-2"></i>Installation</h6>
-                                <ul>
-                                    <li>Office 365 setup</li>
-                                    <li>OneDrive configuration</li>
-                                    <li>License activation</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-graph-up text-primary me-2"></i>Advanced Features</h6>
-                                <ul>
-                                    <li>Excel macros & Power Query</li>
-                                    <li>PowerPoint animations</li>
-                                    <li>Word templates</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-people text-primary me-2"></i>Training</h6>
-                                <ul>
-                                    <li>Beginner to advanced courses</li>
-                                    <li>Customized training</li>
-                                    <li>Certification prep</li>
-                                </ul>
-                            </div>
-
-                            <div class="alert alert-primary">
-                                <i class="bi bi-cloud me-2"></i> We support both standalone and 365 subscription versions.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Request Office Support</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Hardware Maintenance Service Item -->
-    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-        <div class="service-item">
-            <div class="icon-box-primary mb-4">
-                <i class="bi bi-tools text-dark"></i>
-            </div>
-            <h5 class="mb-3">Hardware Maintenance</h5>
-            <p class="mb-4">Professional maintenance and repair services for computers, servers, and networking equipment...</p>
-            <button class="btn btn-light px-3" data-bs-toggle="modal" data-bs-target="#hardwareMaintenanceModal">
-                Read More <i class="bi bi-chevron-double-right ms-1"></i>
-            </button>
-        </div>
-    </div>
-
-    <!-- Hardware Maintenance Modal -->
-    <div class="modal fade" id="hardwareMaintenanceModal" tabindex="-1" aria-labelledby="hardwareMaintenanceModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="hardwareMaintenanceModalLabel"><i class="bi bi-tools me-2"></i>Hardware Maintenance Services</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded mb-3" alt="Hardware Maintenance">
-                            <div class="p-3 bg-light rounded">
-                                <h6><i class="bi bi-check-circle-fill text-primary me-2"></i>Service Benefits</h6>
-                                <ul class="list-unstyled">
-                                    <li><i class="bi bi-check text-success me-2"></i>Extended equipment lifespan</li>
-                                    <li><i class="bi bi-check text-success me-2"></i>Reduced downtime</li>
-                                    <li><i class="bi bi-check text-success me-2"></i>Cost-effective repairs</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="text-primary">Comprehensive Hardware Solutions</h4>
-                            <p>We provide complete hardware maintenance services to keep your systems running optimally:</p>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-pc-display text-primary me-2"></i>Computer Maintenance</h6>
-                                <ul>
-                                    <li>Component cleaning and replacement</li>
-                                    <li>Thermal paste application</li>
-                                    <li>Preventive maintenance checks</li>
-                                    <li>Hardware diagnostics</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-server text-primary me-2"></i>Server Maintenance</h6>
-                                <ul>
-                                    <li>RAID array maintenance</li>
-                                    <li>Power supply checks</li>
-                                    <li>Backplane inspections</li>
-                                    <li>Hot-swap component replacement</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-router text-primary me-2"></i>Networking Equipment</h6>
-                                <ul>
-                                    <li>Switch and router maintenance</li>
-                                    <li>Fiber optic cleaning</li>
-                                    <li>Cooling system checks</li>
-                                    <li>Firmware updates</li>
-                                </ul>
-                            </div>
-
-                            <div class="alert alert-primary">
-                                <i class="bi bi-shield-check me-2"></i> Our technicians are certified by Dell, HP, Cisco, and other major manufacturers.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Schedule Maintenance</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- OS Installation Modal -->
-    <div class="modal fade" id="serviceModal8" tabindex="-1" aria-labelledby="serviceModalLabel8" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-secondary text-white">
-                    <h5 class="modal-title" id="serviceModalLabel8"><i class="bi bi-windows me-2"></i>Operating System Installation</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" class="img-fluid rounded mb-3" alt="OS Installation">
-                            <div class="card border-secondary">
-                                <div class="card-header bg-secondary text-white">
-                                    <i class="bi bi-pc-display me-2"></i>Supported Systems
-                                </div>
-                                <div class="card-body">
-                                    <ul class="list-unstyled">
-                                        <li><i class="bi bi-windows text-secondary me-2"></i>Windows 10/11</li>
-                                        <li><i class="bi bi-ubuntu text-secondary me-2"></i>Ubuntu Linux</li>
-                                        <li><i class="bi bi-apple text-secondary me-2"></i>macOS</li>
-                                        <li><i class="bi bi-terminal text-secondary me-2"></i>Other Linux distros</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="text-secondary">Professional OS Services</h4>
-                            <p>Complete operating system installation and configuration:</p>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-hdd text-secondary me-2"></i>Installation</h6>
-                                <ul>
-                                    <li>Clean OS installation</li>
-                                    <li>Dual-boot setup</li>
-                                    <li>Driver installation</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-gear text-secondary me-2"></i>Configuration</h6>
-                                <ul>
-                                    <li>User accounts setup</li>
-                                    <li>Network configuration</li>
-                                    <li>Security settings</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-3">
-                                <h6><i class="bi bi-shield-check text-secondary me-2"></i>Optimization</h6>
-                                <ul>
-                                    <li>Performance tuning</li>
-                                    <li>Startup optimization</li>
-                                    <li>Essential software setup</li>
-                                </ul>
-                            </div>
-
-                            <div class="alert alert-secondary">
-                                <i class="bi bi-clock-history me-2"></i> Average installation time: 1-2 hours depending on system.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-secondary">Request OS Installation</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
     <!-- Footer Start -->
     <div class="container-fluid footer position-relative bg-dark text-white-50 py-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container">
@@ -1189,7 +995,6 @@
     </div>
     <!-- Footer End -->
 
-
     <!-- Copyright Start -->
     <div class="container-fluid copyright bg-dark text-white-50 py-4">
         <div class="container">
@@ -1198,39 +1003,174 @@
                     <p class="text-muted mb-0">&copy; 2025 Powered by  MUKOTECH NETWORKS. All rights reserved. | Privacy Policy | Terms of Service</p>
                 </div>
             </div>
-            </div>
         </div>
     </div>
     <!-- Copyright End -->
+</div>
+<!-- End of #content div -->
 
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-
-    <script>
-        // Preloader removal script
-        document.addEventListener("DOMContentLoaded", function() {
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Preloader removal
+        setTimeout(function() {
+            document.body.classList.add("loaded");
             setTimeout(function() {
-                document.body.classList.add("loaded");
-                setTimeout(function() {
-                    document.getElementById("preloader").style.display = "none";
-                }, 500); // Wait for fade-out transition to complete
-            }, 2000); // Adjust time as needed (2000ms = 2 seconds)
+                document.getElementById("preloader").style.display = "none";
+            }, 500);
+        }, 2000);
+
+        // Mobile menu toggle functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navbarNav = document.getElementById('navbarNav');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            navbarNav.classList.toggle('active');
+            // Toggle icon between bars and times
+            const icon = mobileMenuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
-    </script>
-</div> <!-- End of #content div -->
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!navbarNav.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                navbarNav.classList.remove('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Search toggle functionality
+        const searchToggle = document.getElementById('searchToggle');
+        const searchBox = document.getElementById('searchBox');
+
+        searchToggle.addEventListener('click', function() {
+            searchBox.classList.toggle('show');
+        });
+
+        // Close search box when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!searchBox.contains(event.target) && !searchToggle.contains(event.target)) {
+                searchBox.classList.remove('show');
+            }
+        });
+
+        // Sticky header functionality
+        const header = document.querySelector('.main-header');
+        const navbar = document.querySelector('.main-navbar');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > 100) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+                navbar.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.1)';
+
+                // Hide/show navbar on scroll
+                if (scrollTop > lastScrollTop && scrollTop > 200) {
+                    // Scrolling down
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up
+                    navbar.style.transform = 'translateY(0)';
+                }
+            } else {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                navbar.style.transform = 'translateY(0)';
+            }
+
+            lastScrollTop = scrollTop;
+        });
+
+        // Dropdown menu functionality for mobile
+        const dropdownItems = document.querySelectorAll('.nav-item.dropdown');
+
+        if (window.innerWidth <= 768) {
+            dropdownItems.forEach(item => {
+                const link = item.querySelector('.nav-link');
+
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const dropdown = item.querySelector('.dropdown-menu');
+                    dropdown.classList.toggle('show');
+                });
+            });
+        }
+
+        // Search form submission
+        const searchForm = document.querySelector('.search-form');
+        if (searchForm) {
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const searchInput = this.querySelector('.search-input');
+                const query = searchInput.value;
+
+                if (query) {
+                    // Here you would typically handle the search
+                    alert(`Searching for: ${query}`);
+                    searchInput.value = '';
+                    searchBox.classList.remove('show');
+                }
+            });
+        }
+
+        // Active nav link functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+
+                // Close mobile menu if open
+                if (window.innerWidth <= 768) {
+                    navbarNav.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Back to top functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    });
+</script>
 </body>
 </html>

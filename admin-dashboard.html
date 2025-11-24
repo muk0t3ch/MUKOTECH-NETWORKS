@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>About Us - MUKOTECH NETWORKS</title>
+    <title>Admin Dashboard - MUKOTECH NETWORKS</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -556,527 +556,339 @@
             background: var(--light);
         }
 
-        /* ===== ABOUT PAGE STYLES ===== */
-        .about-hero {
-            background: linear-gradient(rgba(15, 26, 58, 0.85), rgba(15, 26, 58, 0.9)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            padding: 120px 0 80px;
-            color: var(--white);
-            text-align: center;
+        /* ===== ADMIN DASHBOARD STYLES ===== */
+        .admin-dashboard {
+            padding: 40px 0;
         }
 
-        .about-hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-hero-badge {
-            display: inline-block;
-            background: rgba(251, 133, 5, 0.2);
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-            border: 1px solid rgba(251, 133, 5, 0.3);
-        }
-
-        .about-hero-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .about-hero-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ===== ABOUT CONTENT SECTION ===== */
-        .about-content {
-            padding: 80px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-subtitle {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 20px;
-        }
-
-        .section-description {
-            font-size: 1.1rem;
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .about-container {
+        .dashboard-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-        }
-
-        /* Company Overview */
-        .company-overview {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            margin-bottom: 80px;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
         }
 
-        .company-image {
+        .admin-sidebar {
+            background: var(--white);
             border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            height: fit-content;
         }
 
-        .company-image img {
-            width: 100%;
-            height: auto;
+        .admin-nav {
+            list-style: none;
+        }
+
+        .admin-nav-item {
+            margin-bottom: 10px;
+        }
+
+        .admin-nav-link {
             display: block;
-            transition: transform 0.5s;
+            padding: 12px 15px;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
         }
 
-        .company-image:hover img {
-            transform: scale(1.05);
+        .admin-nav-link:hover, .admin-nav-link.active {
+            background: var(--light);
+            color: var(--primary);
+            border-left-color: var(--primary);
         }
 
-        .company-text h3 {
+        .admin-nav-link i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .admin-content {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            min-height: 600px;
+        }
+
+        .admin-section {
+            display: none;
+        }
+
+        .admin-section.active {
+            display: block;
+        }
+
+        .admin-section-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-section-title {
             font-size: 1.8rem;
             color: var(--dark);
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
-        .company-text p {
+        .admin-section-subtitle {
             color: var(--gray);
-            margin-bottom: 20px;
-            line-height: 1.7;
         }
 
-        .features-grid {
+        /* Stats Cards */
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin-top: 30px;
+            margin-bottom: 30px;
         }
 
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .stat-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
         }
 
-        .feature-icon {
+        .stat-icon {
             width: 50px;
             height: 50px;
             background: var(--primary);
+            color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
         }
 
-        .feature-icon i {
-            color: var(--white);
-            font-size: 1.2rem;
-        }
-
-        .feature-text h5 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            color: var(--dark);
-        }
-
-        .feature-text p {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin: 0;
-        }
-
-        /* Statistics Section */
-        .statistics {
-            background: var(--secondary);
-            padding: 80px 0;
-            color: var(--white);
-            margin-bottom: 80px;
-        }
-
-        .stats-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 3rem;
+        .stat-value {
+            font-size: 2rem;
             font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .stat-text {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Core Principles */
-        .principles {
-            margin-bottom: 80px;
-        }
-
-        .principles-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .principle-card {
-            background: var(--white);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-        }
-
-        .principle-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .principle-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .principle-icon i {
-            color: var(--white);
-            font-size: 1.8rem;
-        }
-
-        .principle-card h3 {
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-
-        .principle-card p {
-            color: var(--gray);
-            line-height: 1.6;
-        }
-
-        .principle-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-        }
-
-        .principle-list li {
-            padding: 8px 0;
-            color: var(--gray);
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .principle-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        /* Values Section */
-        .values {
-            margin-bottom: 80px;
-        }
-
-        .values-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .value-card {
-            background: var(--white);
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-        }
-
-        .value-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .value-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-
-        .value-icon i {
-            color: var(--white);
-            font-size: 1.8rem;
-        }
-
-        .value-card h3 {
-            font-size: 1.3rem;
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-
-        .value-card p {
-            color: var(--gray);
-            line-height: 1.6;
-        }
-
-        /* Leadership Section */
-        .leadership {
-            margin-bottom: 80px;
-        }
-
-        .leader-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-        }
-
-        .leader-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .leader-header {
-            background: var(--secondary);
-            color: var(--white);
-            padding: 30px;
-            text-align: center;
-        }
-
-        .leader-avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            border: 5px solid var(--primary);
-            overflow: hidden;
-        }
-
-        .leader-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .leader-header h3 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        .leader-header p {
-            opacity: 0.9;
-            margin: 5px 0 0;
-        }
-
-        .leader-body {
-            padding: 30px;
-        }
-
-        .leader-body p {
-            color: var(--gray);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        /* Team Section */
-        .team {
-            margin-bottom: 80px;
-        }
-
-        .team-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .team-member {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .member-avatar {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .member-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .team-member:hover .member-avatar img {
-            transform: scale(1.1);
-        }
-
-        .member-info {
-            padding: 20px;
-        }
-
-        .member-info h4 {
-            font-size: 1.2rem;
             color: var(--dark);
             margin-bottom: 5px;
         }
 
-        .member-info p {
+        .stat-label {
             color: var(--gray);
-            margin-bottom: 10px;
             font-size: 0.9rem;
         }
 
-        .member-role {
-            color: var(--primary);
+        /* Product Form Styles */
+        .product-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
             font-weight: 500;
         }
 
-        /* Timeline Section */
-        .timeline {
-            margin-bottom: 80px;
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s;
         }
 
-        .timeline-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(251, 133, 5, 0.1);
         }
 
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 2px;
-            background: var(--primary);
-            transform: translateX(-50%);
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
         }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 50px;
-        }
-
-        .timeline-item:nth-child(odd) {
-            padding-right: 50%;
-        }
-
-        .timeline-item:nth-child(even) {
-            padding-left: 50%;
-        }
-
-        .timeline-content {
-            background: var(--white);
-            border-radius: 10px;
+        .image-upload-container {
+            border: 2px dashed rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            position: relative;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            top: 30px;
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 50%;
+        .image-upload-container:hover {
+            border-color: var(--primary);
         }
 
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            right: -40px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -40px;
-        }
-
-        .timeline-year {
-            display: inline-block;
-            background: var(--primary);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: 600;
+        .image-upload-icon {
+            font-size: 3rem;
+            color: var(--gray);
             margin-bottom: 15px;
         }
 
-        .timeline-content h3 {
-            font-size: 1.3rem;
+        .image-upload-text {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(251, 133, 5, 0.2);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: var(--white);
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: var(--white);
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        /* Product Grid Styles */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 180px;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
             color: var(--dark);
             margin-bottom: 10px;
         }
 
-        .timeline-content p {
+        .product-description {
             color: var(--gray);
-            line-height: 1.6;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .product-stock {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-sm {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            flex: 1;
+            text-align: center;
+        }
+
+        .btn-outline-primary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: var(--white);
         }
 
         /* ===== FOOTER STYLES ===== */
@@ -1267,45 +1079,20 @@
                 justify-content: center;
             }
 
-            .about-hero-title {
-                font-size: 2.5rem;
-            }
-
-            .company-overview {
+            .dashboard-container {
                 grid-template-columns: 1fr;
-                gap: 40px;
             }
 
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
+            .admin-sidebar {
+                order: 2;
             }
 
-            .principles-container {
+            .admin-content {
+                order: 1;
+            }
+
+            .product-form {
                 grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .values-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .team-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .timeline-container::before {
-                left: 30px;
-            }
-
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                padding-left: 80px;
-                padding-right: 0;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-content::before,
-            .timeline-item:nth-child(even) .timeline-content::before {
-                left: -40px;
             }
 
             .navbar-container {
@@ -1325,33 +1112,14 @@
         }
 
         @media (max-width: 768px) {
-            .about-hero-title {
-                font-size: 2.2rem;
-            }
-
             .header-contact {
                 flex-direction: column;
                 gap: 15px;
             }
 
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-
-            .values-container {
-                grid-template-columns: 1fr;
-            }
-
-            .team-container {
-                grid-template-columns: 1fr;
+            .btn {
+                width: 100%;
+                max-width: 300px;
             }
 
             .brand-logo {
@@ -1417,20 +1185,8 @@
         }
 
         @media (max-width: 576px) {
-            .about-hero {
-                padding: 100px 0 60px;
-            }
-
-            .about-content {
-                padding: 60px 0;
-            }
-
-            .statistics {
-                padding: 60px 0;
-            }
-
-            .principle-card, .value-card, .leader-body, .member-info, .timeline-content {
-                padding: 20px;
+            .admin-dashboard {
+                padding: 30px 0;
             }
 
             .footer {
@@ -1526,9 +1282,9 @@
                 <a href="appoinment.html" class="nav-link">Appointment</a>
             </div>
             <div class="nav-item dropdown">
-                <a href="online-store-setup.html" class="nav-link">E-Commerce <i class="fas fa-chevron-down"></i></a>
+                <a href="online-store-setup.html" class="nav-link">Online Store <i class="fas fa-chevron-down"></i></a>
                 <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">Online Store Setup</a>
+                    <a href="online-store-setup.html" class="dropdown-item">Online Store Setup</a>
                     <a href="#" class="dropdown-item">Payment Integration</a>
                     <a href="#" class="dropdown-item">Inventory Management</a>
                     <a href="#" class="dropdown-item">Digital Marketing</a>
@@ -1538,11 +1294,14 @@
                 <a href="contact.html" class="nav-link">Contact</a>
             </div>
             <div class="nav-item">
-                <a href="about.html" class="nav-link active">About</a>
+                <a href="about.html" class="nav-link">About</a>
             </div>
             <div class="nav-item">
                 <a href="policy.html" class="nav-link">Company Policy</a>
             </div>
+            <li class="nav-item">
+                <a href="admin-dashboard.html" class="nav-link active">Admin Dashboard</a>
+            </li>
         </div>
         <div class="search-container">
             <button class="search-toggle" id="searchToggle">
@@ -1550,7 +1309,7 @@
             </button>
             <div class="search-box" id="searchBox">
                 <form class="search-form">
-                    <input type="text" class="search-input" placeholder="Search services...">
+                    <input type="text" class="search-input" placeholder="Search products...">
                     <button type="submit" class="search-btn">
                         <i class="fas fa-search"></i>
                     </button>
@@ -1567,321 +1326,176 @@
 </nav>
 <!-- Navbar End -->
 
-<!-- About Hero Section Start -->
-<section class="about-hero">
-    <div class="header-container">
-        <div class="about-hero-content">
-            <span class="about-hero-badge">Our Story</span>
-            <h1 class="about-hero-title">Welcome to MUKOTECH NETWORKS</h1>
-            <p class="about-hero-subtitle">MUKOTECH NETWORKS is a premier technology solutions provider headquartered in Kitwe, Zambia. Founded in 2020, we have rapidly grown to become a trusted partner for businesses seeking comprehensive IT services, innovative digital solutions, and reliable technical support.</p>
+<!-- Admin Dashboard Section Start -->
+<section class="admin-dashboard">
+    <div class="dashboard-container">
+        <div class="admin-sidebar">
+            <ul class="admin-nav">
+                <li class="admin-nav-item">
+                    <a href="#dashboard" class="admin-nav-link active" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="#add-product" class="admin-nav-link" data-section="add-product">
+                        <i class="fas fa-plus-circle"></i> Add Product
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="#manage-products" class="admin-nav-link" data-section="manage-products">
+                        <i class="fas fa-boxes"></i> Manage Products
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="#orders" class="admin-nav-link" data-section="orders">
+                        <i class="fas fa-shopping-cart"></i> Orders
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="#analytics" class="admin-nav-link" data-section="analytics">
+                        <i class="fas fa-chart-bar"></i> Analytics
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="online-store-setup.html" class="admin-nav-link">
+                        <i class="fas fa-store"></i> View Store
+                    </a>
+                </li>
+            </ul>
         </div>
-    </div>
-</section>
-<!-- About Hero Section End -->
-
-<!-- About Content Section Start -->
-<section class="about-content">
-    <div class="about-container">
-        <!-- Company Overview -->
-        <div class="company-overview">
-            <div class="company-image">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="MUKOTECH NETWORKS Team">
-            </div>
-            <div class="company-text">
-                <h3>Our Journey in Technology</h3>
-                <p>Our team of certified professionals combines technical expertise with business acumen to deliver solutions that drive efficiency, enhance productivity, and foster growth. We pride ourselves on understanding our clients' unique challenges and tailoring our services to meet their specific needs.</p>
-                <p>We don't just provide IT solutions - we build partnerships that help our clients thrive in the digital economy.</p>
-
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="bi bi-award"></i>
+        <div class="admin-content">
+            <!-- Dashboard Section -->
+            <div class="admin-section active" id="dashboard-section">
+                <div class="admin-section-header">
+                    <h3 class="admin-section-title">Dashboard Overview</h3>
+                    <p class="admin-section-subtitle">Welcome to your online store management dashboard</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-box"></i>
                         </div>
-                        <div class="feature-text">
-                            <h5>Certified Professionals</h5>
-                            <p>Industry-certified experts</p>
+                        <div class="stat-value" id="total-products">12</div>
+                        <div class="stat-label">Total Products</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-value" id="total-orders">8</div>
+                        <div class="stat-label">Total Orders</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-value" id="total-customers">24</div>
+                        <div class="stat-label">Total Customers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-value" id="total-revenue">$1,240</div>
+                        <div class="stat-label">Total Revenue</div>
+                    </div>
+                </div>
+                <div class="recent-products">
+                    <h4>Recently Added Products</h4>
+                    <div class="products-grid" id="recent-products-grid">
+                        <!-- Recent products will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Product Section -->
+            <div class="admin-section" id="add-product-section">
+                <div class="admin-section-header">
+                    <h3 class="admin-section-title">Add New Product</h3>
+                    <p class="admin-section-subtitle">Add a new product to your online store</p>
+                </div>
+                <form id="add-product-form" class="product-form">
+                    <div class="form-group">
+                        <label for="product-name" class="form-label">Product Name</label>
+                        <input type="text" id="product-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-category" class="form-label">Category</label>
+                        <select id="product-category" class="form-control" required>
+                            <option value="">Select Category</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="home">Home & Garden</option>
+                            <option value="sports">Sports & Outdoors</option>
+                            <option value="beauty">Beauty & Health</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-price" class="form-label">Price ($)</label>
+                        <input type="number" id="product-price" class="form-control" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-stock" class="form-label">Stock Quantity</label>
+                        <input type="number" id="product-stock" class="form-control" min="0" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="product-description" class="form-label">Description</label>
+                        <textarea id="product-description" class="form-control form-textarea" required></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label">Product Image</label>
+                        <div class="image-upload-container" id="image-upload-container">
+                            <div class="image-upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <p class="image-upload-text">Click to upload or drag and drop</p>
+                            <p class="image-upload-text">PNG, JPG, GIF up to 5MB</p>
+                            <input type="file" id="product-image" accept="image/*" style="display: none;">
+                            <img id="image-preview" class="image-preview" src="" alt="Image Preview">
                         </div>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="bi bi-check-circle"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h5>Quality Assurance</h5>
-                            <p>Rigorous quality standards</p>
-                        </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn btn-primary btn-success">Add Product</button>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="bi bi-headset"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h5>24/7 Support</h5>
-                            <p>Always available for you</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="bi bi-lightning"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h5>Cutting-edge Solutions</h5>
-                            <p>Latest technology innovations</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Statistics Section -->
-        <section class="statistics">
-            <div class="stats-container">
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-text">Happy Clients</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">200+</div>
-                    <div class="stat-text">Projects Completed</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-text">Expert Team</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-text">Support</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Core Principles Section -->
-        <div class="principles">
-            <div class="section-header">
-                <p class="section-subtitle">Our Core Principles</p>
-                <h2 class="section-title">Guiding our decisions and shaping our future</h2>
+                </form>
             </div>
 
-            <div class="principles-container">
-                <div class="principle-card">
-                    <div class="principle-icon">
-                        <i class="bi bi-bullseye"></i>
-                    </div>
-                    <h3>Our Mission</h3>
-                    <p>To empower businesses and individuals through cutting-edge technology solutions that drive efficiency, growth, and digital transformation. We are committed to delivering reliable, scalable, and innovative IT services tailored to our clients' unique needs.</p>
-                    <ul class="principle-list">
-                        <li>Deliver exceptional IT solutions that solve real business challenges</li>
-                        <li>Provide outstanding customer service with rapid response times</li>
-                        <li>Foster technological advancement in the Zambian business community</li>
-                        <li>Support digital transformation across all industry sectors</li>
-                        <li>Maintain the highest standards of integrity and professionalism</li>
-                    </ul>
+            <!-- Manage Products Section -->
+            <div class="admin-section" id="manage-products-section">
+                <div class="admin-section-header">
+                    <h3 class="admin-section-title">Manage Products</h3>
+                    <p class="admin-section-subtitle">Edit or delete products from your store</p>
                 </div>
-
-                <div class="principle-card">
-                    <div class="principle-icon">
-                        <i class="bi bi-eye"></i>
-                    </div>
-                    <h3>Our Vision</h3>
-                    <p>To be the leading technology partner in Zambia, recognized for excellence in IT solutions and digital innovation. We aim to bridge the technological gap by providing accessible, high-quality services that transform how businesses operate.</p>
-                    <ul class="principle-list">
-                        <li>Become Zambia's most trusted IT solutions provider by 2025</li>
-                        <li>Expand our service offerings to cover emerging technologies</li>
-                        <li>Develop local tech talent through training and mentorship</li>
-                        <li>Drive digital inclusion across all sectors of the economy</li>
-                        <li>Establish regional offices across Zambia and beyond</li>
-                    </ul>
-                </div>
-
-                <div class="principle-card">
-                    <div class="principle-icon">
-                        <i class="bi bi-heart"></i>
-                    </div>
-                    <h3>Our Core Values</h3>
-                    <p>The foundation of everything we do</p>
-                    <ul class="principle-list">
-                        <li><strong>Integrity:</strong> We maintain the highest ethical standards in all our business dealings and client relationships. Honesty and transparency guide every decision we make.</li>
-                        <li><strong>Innovation:</strong> We continuously explore new technologies and creative solutions to solve our clients' challenges. Our team stays ahead of industry trends.</li>
-                        <li><strong>Collaboration:</strong> We believe in teamwork both within our organization and with our clients to achieve the best results. Partnership is key to our success.</li>
-                        <li><strong>Excellence:</strong> We strive for the highest quality in everything we do, from service delivery to customer support. Good enough is never good enough for us.</li>
-                    </ul>
+                <div class="products-grid" id="manage-products-grid">
+                    <!-- Products will be populated by JavaScript -->
                 </div>
             </div>
-        </div>
 
-        <!-- Values Section -->
-        <div class="values">
-            <div class="section-header">
-                <p class="section-subtitle">Our Values</p>
-                <h2 class="section-title">The Foundation of Everything We Do</h2>
-            </div>
-
-            <div class="values-container">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="bi bi-shield-check"></i>
-                    </div>
-                    <h3>Integrity</h3>
-                    <p>We maintain the highest ethical standards in all our business dealings and client relationships.</p>
+            <!-- Orders Section -->
+            <div class="admin-section" id="orders-section">
+                <div class="admin-section-header">
+                    <h3 class="admin-section-title">Order Management</h3>
+                    <p class="admin-section-subtitle">View and manage customer orders</p>
                 </div>
-
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="bi bi-lightbulb"></i>
-                    </div>
-                    <h3>Innovation</h3>
-                    <p>We continuously explore new technologies and creative solutions to solve our clients' challenges.</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="bi bi-people"></i>
-                    </div>
-                    <h3>Collaboration</h3>
-                    <p>We believe in teamwork both within our organization and with our clients to achieve the best results.</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="bi bi-award"></i>
-                    </div>
-                    <h3>Excellence</h3>
-                    <p>We strive for the highest quality in everything we do, from service delivery to customer support.</p>
+                <div class="orders-list">
+                    <p>Order management functionality will be implemented in the full version.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Leadership Section -->
-        <div class="leadership">
-            <div class="section-header">
-                <p class="section-subtitle">Executive Leadership</p>
-                <h2 class="section-title">The visionaries driving our company forward</h2>
-            </div>
-
-            <div class="leader-card">
-                <div class="leader-header">
-                    <div class="leader-avatar">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Given Mukwanji">
-                    </div>
-                    <h3>Mr. Given Mukwanji</h3>
-                    <p>Founder & Chief Executive Officer</p>
-                    <p>Kitwe, Copperbelt, Zambia</p>
+            <!-- Analytics Section -->
+            <div class="admin-section" id="analytics-section">
+                <div class="admin-section-header">
+                    <h3 class="admin-section-title">Store Analytics</h3>
+                    <p class="admin-section-subtitle">View performance metrics for your store</p>
                 </div>
-                <div class="leader-body">
-                    <h4>Technology Visionary & Entrepreneur</h4>
-                    <p>Mr. Given Mukwanji is the visionary leader and founder of MUKOTECH NETWORKS. With over 8 years of experience in the technology sector, he has built a reputation for innovative thinking and practical problem-solving. His technical expertise spans network infrastructure, cybersecurity, and software development.</p>
-                    <p>Under his leadership, MUKOTECH NETWORKS has grown from a small startup to a recognized leader in Zambia's IT services sector. He has spearheaded the company's expansion into new service areas including cloud computing, enterprise software solutions, and digital transformation consulting.</p>
-                    <p>Mr. Mukwanji holds certifications in Cisco networking, Microsoft systems administration, and cybersecurity. He is a frequent speaker at technology conferences and serves as a mentor to young Zambian entrepreneurs through various business development programs.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Team Section -->
-        <div class="team">
-            <div class="section-header">
-                <p class="section-subtitle">Our Expert Team</p>
-                <h2 class="section-title">Meet the talented professionals who make it all happen</h2>
-            </div>
-
-            <div class="team-container">
-                <div class="team-member">
-                    <div class="member-avatar">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Alex Robin">
-                    </div>
-                    <div class="member-info">
-                        <h4>Alex Robin</h4>
-                        <p class="member-role">Senior Network Engineer</p>
-                        <p>CCNP, CCNA Security</p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <div class="member-avatar">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Andrew Bon">
-                    </div>
-                    <div class="member-info">
-                        <h4>Andrew Bon</h4>
-                        <p class="member-role">Lead Software Developer</p>
-                        <p>MERN Stack Specialist</p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <div class="member-avatar">
-                        <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Martin Tompson">
-                    </div>
-                    <div class="member-info">
-                        <h4>Martin Tompson</h4>
-                        <p class="member-role">IT Support Manager</p>
-                        <p>Microsoft Certified</p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <div class="member-avatar">
-                        <img src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Clarabelle Samber">
-                    </div>
-                    <div class="member-info">
-                        <h4>Clarabelle Samber</h4>
-                        <p class="member-role">Creative Director</p>
-                        <p>Adobe Certified Expert</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Timeline Section -->
-        <div class="timeline">
-            <div class="section-header">
-                <p class="section-subtitle">Our Journey</p>
-                <h2 class="section-title">Milestones in our growth and development</h2>
-            </div>
-
-            <div class="timeline-container">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-year">2020</span>
-                        <h3>Foundation</h3>
-                        <p>MUKOTECH NETWORKS was founded by Given Mukwanji with a vision to provide quality IT solutions in Zambia. Started as a small computer repair shop in Kitwe, serving local businesses and individuals with hardware repairs and basic IT support.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-year">2021</span>
-                        <h3>First Major Contract</h3>
-                        <p>Secured our first corporate client, marking our transition from consumer to business IT services. Expanded our team to include two additional technicians and moved to a larger office space in Ndeke Village.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-year">2022</span>
-                        <h3>Service Expansion</h3>
-                        <p>Launched our network solutions division and began offering comprehensive IT support packages for small and medium businesses. Became a certified partner for several major technology brands including Microsoft and Cisco.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-year">2023</span>
-                        <h3>Digital Transformation</h3>
-                        <p>Introduced web development and digital marketing services, completing our transformation into a full-service technology provider. Our team grew to 10 professionals serving clients across the Copperbelt region.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-year">2024</span>
-                        <h3>Future Goals</h3>
-                        <p>Planning to open a second location in Lusaka and expand our service offerings to include cybersecurity consulting and cloud solutions. Aiming to double our client base and launch an internship program for local IT students.</p>
-                    </div>
+                <div class="analytics-content">
+                    <p>Analytics dashboard will be implemented in the full version.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- About Content Section End -->
+<!-- Admin Dashboard Section End -->
 
 <!-- Footer Start -->
 <footer class="footer">
@@ -2098,6 +1712,231 @@
                 }
             });
         }
+
+        // Admin Dashboard Functionality
+        const adminNavLinks = document.querySelectorAll('.admin-nav-link');
+        const adminSections = document.querySelectorAll('.admin-section');
+
+        // Switch between admin sections
+        adminNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === 'online-store-setup.html') {
+                    return; // Allow navigation to store page
+                }
+
+                e.preventDefault();
+
+                // Remove active class from all links
+                adminNavLinks.forEach(l => l.classList.remove('active'));
+
+                // Add active class to clicked link
+                this.classList.add('active');
+
+                // Get target section
+                const targetSection = this.getAttribute('data-section');
+
+                // Hide all sections
+                adminSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // Show target section
+                document.getElementById(`${targetSection}-section`).classList.add('active');
+            });
+        });
+
+        // Image upload functionality
+        const imageUploadContainer = document.getElementById('image-upload-container');
+        const productImageInput = document.getElementById('product-image');
+        const imagePreview = document.getElementById('image-preview');
+
+        imageUploadContainer.addEventListener('click', function() {
+            productImageInput.click();
+        });
+
+        productImageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Product Management
+        let products = JSON.parse(localStorage.getItem('products')) || [
+            {
+                id: 1,
+                name: "Wireless Bluetooth Headphones",
+                category: "electronics",
+                price: 79.99,
+                stock: 15,
+                description: "High-quality wireless headphones with noise cancellation and long battery life.",
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 2,
+                name: "Smart Fitness Watch",
+                category: "electronics",
+                price: 199.99,
+                stock: 8,
+                description: "Advanced fitness tracking with heart rate monitoring and GPS.",
+                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 3,
+                name: "Casual T-Shirt",
+                category: "clothing",
+                price: 24.99,
+                stock: 25,
+                description: "Comfortable cotton t-shirt available in multiple colors.",
+                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                id: 4,
+                name: "Kitchen Blender",
+                category: "home",
+                price: 89.99,
+                stock: 12,
+                description: "Powerful blender for smoothies, soups, and more.",
+                image: "https://images.unsplash.com/photo-1570222094114-d054a817e56b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            }
+        ];
+
+        // Save products to localStorage
+        function saveProducts() {
+            localStorage.setItem('products', JSON.stringify(products));
+            updateProductCount();
+            renderProducts();
+        }
+
+        // Update product count in dashboard
+        function updateProductCount() {
+            document.getElementById('total-products').textContent = products.length;
+        }
+
+        // Render products in various sections
+        function renderProducts() {
+            // Render in manage products section
+            const manageProductsGrid = document.getElementById('manage-products-grid');
+            manageProductsGrid.innerHTML = '';
+
+            products.forEach(product => {
+                const productCard = createProductCard(product, true);
+                manageProductsGrid.appendChild(productCard);
+            });
+
+            // Render recent products in dashboard
+            const recentProductsGrid = document.getElementById('recent-products-grid');
+            recentProductsGrid.innerHTML = '';
+
+            const recentProducts = products.slice(-3).reverse();
+            recentProducts.forEach(product => {
+                const productCard = createProductCard(product, false);
+                recentProductsGrid.appendChild(productCard);
+            });
+        }
+
+        // Create product card element
+        function createProductCard(product, isAdmin) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+
+            card.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="product-content">
+                    <div class="product-category">${product.category}</div>
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <div class="product-stock">In stock: ${product.stock}</div>
+                    <div class="product-actions">
+                        ${isAdmin ?
+                `<button class="btn btn-sm btn-outline-primary edit-product" data-id="${product.id}">Edit</button>
+                             <button class="btn btn-sm btn-danger delete-product" data-id="${product.id}">Delete</button>` :
+                `<button class="btn btn-sm btn-primary">View Details</button>`
+            }
+                    </div>
+                </div>
+            `;
+
+            // Add event listeners for admin actions
+            if (isAdmin) {
+                const deleteBtn = card.querySelector('.delete-product');
+                deleteBtn.addEventListener('click', function() {
+                    if (confirm('Are you sure you want to delete this product?')) {
+                        deleteProduct(product.id);
+                    }
+                });
+
+                const editBtn = card.querySelector('.edit-product');
+                editBtn.addEventListener('click', function() {
+                    editProduct(product.id);
+                });
+            }
+
+            return card;
+        }
+
+        // Delete product
+        function deleteProduct(id) {
+            products = products.filter(product => product.id !== id);
+            saveProducts();
+        }
+
+        // Edit product (placeholder for now)
+        function editProduct(id) {
+            alert('Edit functionality will be implemented in the full version.');
+        }
+
+        // Add product form submission
+        const addProductForm = document.getElementById('add-product-form');
+        addProductForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('product-name').value;
+            const category = document.getElementById('product-category').value;
+            const price = parseFloat(document.getElementById('product-price').value);
+            const stock = parseInt(document.getElementById('product-stock').value);
+            const description = document.getElementById('product-description').value;
+            const image = imagePreview.src || 'https://via.placeholder.com/500x500?text=Product+Image';
+
+            // Create new product
+            const newProduct = {
+                id: Date.now(), // Simple ID generation
+                name,
+                category,
+                price,
+                stock,
+                description,
+                image
+            };
+
+            // Add to products array
+            products.push(newProduct);
+
+            // Save and render
+            saveProducts();
+
+            // Reset form
+            addProductForm.reset();
+            imagePreview.style.display = 'none';
+
+            // Show success message
+            alert('Product added successfully!');
+
+            // Switch to manage products section
+            document.querySelector('.admin-nav-link[data-section="manage-products"]').click();
+        });
+
+        // Initialize
+        updateProductCount();
+        renderProducts();
     });
 </script>
 
